@@ -14,22 +14,20 @@ static int	check_argv(int argc, char **argv)
 {
 	int	len;
 
-	// if (argc == 2)
-	// {
-	// 	len = ft_strlen(argv[1]);
-	// 	if (argv[1][len - 1] == 'b' || argv[1][len - 2] == 'u'
-	// 		|| argv[1][len - 3] == 'c' || argv[1][len - 4] == '.')
-	// 		return (1);
-	// }
+	if (argc == 2)
+	{
+		len = ft_strlen(argv[1]);
+		if (argv[1][len - 1] == 'b' || argv[1][len - 2] == 'u'
+			|| argv[1][len - 3] == 'c' || argv[1][len - 4] == '.')
+			return (1);
+	}
 	printf("Error.\nWrite correct map.\n");
 	exit(0);
 }
 
 int main(int argc, char **argv)
 {
-	ft_putchar_fd('1', 1);
-	check_argv(argc, argv);
 	// if (check_argv(argc, argv))
-	// 	game_start(argv[1]);
+		game_start(argv[1]);
 	return (0);
 }

@@ -1,0 +1,417 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jul  4 03:47:13 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = mate
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 14)
+OBJ = $(SRC:.c=.o)
+# environment
+XDG_SESSION_CLASS = user
+# makefile (from 'Makefile', line 12)
+SRC = $(addprefix src/, $(SRC_LIST))
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+QT_FONT_DPI = 96
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /home/time/.Xauthority
+# environment
+GDMSESSION = mate
+# default
+MAKE_VERSION := 4.2.1
+# makefile
+CURDIR := /home/time/github
+# makefile
+SHELL = /bin/sh
+# environment
+GDM_LANG = en_US
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'Makefile', line 18)
+MLX = libmlx.a
+# environment
+_ = /usr/share/code/code
+# environment
+JOURNAL_STREAM = 9:25091
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-mate:/etc/xdg
+# environment
+GTK_OVERLAY_SCROLLING = 0
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+XDG_DATA_DIRS = /usr/share/mate:/home/time/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=78e083b538091e34aa7f6c9c62c2297e
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+QT_SCALE_FACTOR = 1
+# environment
+MANAGERPID = 894
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+LC_NAME = ru_RU.UTF-8
+# environment
+VSCODE_CWD = /home/time
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/time/.local/bin:/home/time/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/timeMoon:@/tmp/.ICE-unix/902,unix/timeMoon:/tmp/.ICE-unix/902
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 36a1b9ffa22e4d9e9716ceece912aa36
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/time
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = mate
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1836
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/time/github
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# default
+.LOADED := 
+# environment
+XDG_SEAT = seat0
+# environment
+SSH_AGENT_PID = 1038
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = MATE
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/time
+# makefile (from 'Makefile', line 19)
+MAC_FLAGS = -framework OpenGL -framework AppKit
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CODE_CACHE_PATH = /home/time/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+LOGNAME = time
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# makefile (from 'Makefile', line 20)
+LINUX_FLAGS = -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XDG_VTNR = 7
+# environment
+CLUTTER_BACKEND = x11
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 16)
+LIBFT = ./libft/libft.a
+# makefile (from 'Makefile', line 4)
+CC = gcc
+# makefile (from 'Makefile', line 22)
+UNAME := Linux
+# environment
+IM_CONFIG_PHASE = 1
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e270363d-5097-477a-b090-6463a04cbf69.sock
+# environment
+COMPIZ_CONFIG_PROFILE = mint
+# environment
+XDG_SESSION_ID = c1
+# environment
+USER = time
+# environment
+LC_MONETARY = ru_RU.UTF-8
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = MATE
+# makefile (from 'Makefile', line 2)
+NAME = cub3D
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = ru_RU.UTF-8
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = en_US
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-06174383-1.68.1-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# environment
+LC_PAPER = ru_RU.UTF-8
+# environment
+QT_ACCESSIBILITY = 1
+# 'override' directive
+.SHELLSTATUS := 0
+# default
+MAKEFILES := 
+# environment
+LC_NUMERIC = ru_RU.UTF-8
+# automatic
+<F = $(notdir $<)
+# environment
+LC_MEASUREMENT = ru_RU.UTF-8
+# environment
+LC_ALL = C
+# environment
+DBUS_STARTER_BUS_TYPE = session
+# makefile (from 'Makefile', line 8)
+HEADER = ./includes/cub3D.h
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# makefile (from 'Makefile', line 6)
+FLAGS = -Wall -Wextra -Werror
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# makefile (from 'Makefile', line 10)
+SRC_LIST = main.c
+# environment
+MATE_DESKTOP_SESSION_ID = this-is-deprecated
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+LC_IDENTIFICATION = ru_RU.UTF-8
+# default
+.RECIPEPREFIX := 
+# environment
+LC_ADDRESS = ru_RU.UTF-8
+# environment
+LANG = C
+# environment
+VSCODE_PID = 1836
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=78e083b538091e34aa7f6c9c62c2297e
+# variable set hash-table stats:
+# Load=127/1024=12%, Rehash=0, Collisions=20/192=10%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2053, inode 950299): 12 files, no impossibilities.
+
+# 12 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+ 
+# No implicit rules.
+
+# Files
+
+# Not a target:
+includes/cub3D.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-04 01:18:29.348587346
+#  File has been updated.
+#  Successfully updated.
+
+all: cub3D
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/23=0%
+
+.PHONY: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+src/main.o: src/main.c
+#  Implicit rule search has not been done.
+#  Last modified 2022-07-04 03:43:36.363928007
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 40):
+	@$(CC) -c -o $@ $<
+
+cub3D: src/main.o includes/cub3D.h
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  Last modified 2514-05-30 05:53:03.107374182
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := cub3D
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := src/main.o includes/cub3D.h
+# automatic
+# | := 
+# automatic
+# < := src/main.o
+# automatic
+# ^ := src/main.o includes/cub3D.h
+# automatic
+# ? := src/main.o includes/cub3D.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=5/31=16%
+#  recipe to execute (from 'Makefile', line 27):
+	@#@$(MAKE) all -C $(dir $(LIBFT))
+	@#@$(MAKE) all -C ./mlx_linux/
+	@$(CC) $(FLAGS) $(LIBFT) $(OBJ) ./mlx_linux/$(MLX) $(LINUX_FLAGS) -o $(NAME)
+	@echo Compiled!
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-04 03:44:09.250152917
+#  File has been updated.
+#  Successfully updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 50):
+	@#@$(MAKE) fclean -C $(dir $(LIBFT))
+	@#@$(MAKE) clean -C ./mlx_linux/
+	@rm -rf $(NAME)
+	@echo Full cleaned!
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-04 01:22:57.686261132
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 44):
+	@$(MAKE) clean -C $(dir $(LIBFT))
+	@rm -rf $(OBJ)
+	@echo Cleaned!
+		
+
+# files hash-table stats:
+# Load=12/1024=1%, Rehash=0, Collisions=0/37=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 25 / storage = 202 B / avg = 8 B
+# current buf: size = 8162 B / used = 202 B / count = 25 / avg = 8 B
+
+# strcache performance: lookups = 47 / hit rate = 46%
+# hash-table stats:
+# Load=25/8192=0%, Rehash=0, Collisions=1/47=2%
+# Finished Make data base on Mon Jul  4 03:47:13 2022
+
+ 

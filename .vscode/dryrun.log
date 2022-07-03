@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/time/github'
+gcc -c -o src/main.o src/main.c
+#@make all -C ./libft/
+#@make all -C ./mlx_linux/
+gcc -Wall -Wextra -Werror ./libft/libft.a src/main.o ./mlx_linux/libmlx.a -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz -o cub3D
+echo Compiled!
+make: Leaving directory '/home/time/github'
+ 
