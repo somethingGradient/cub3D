@@ -5,7 +5,7 @@ CC			= gcc
 
 FLAGS		= -Wall -Wextra -Werror
 
-HEADER		= includes/cub3D.h
+HEADER		= ./includes/cub3D.h
 
 SRC_LIST	= main.c
 
@@ -13,11 +13,9 @@ SRC			= $(addprefix src/, $(SRC_LIST))
 
 OBJ			= $(SRC:.c=.o)
 
-INC			= -I ./includes -I ./minilibx
+LIBFT		= ./libft/libft.a
 
-LIBFT	=	./libft/libft.a
-
-MLX			=	libmlx.a
+MLX			= libmlx.a
 MAC_FLAGS	= -framework OpenGL -framework AppKit
 LINUX_FLAGS	= -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
 
@@ -29,10 +27,10 @@ $(NAME): $(OBJ) $(HEADER)
 	@$(MAKE) all -C $(dir $(LIBFT))
 ifeq ($(UNAME), Darwin) 
 	@$(MAKE) all -C ./mlx_mac/
-	@$(CC) $(INC) $(LIBFT) $(OBJ) ./mlx_mac/$(MLX) $(MAC_FLAGS) -o $(NAME)
+	@$(CC) $(FLAGS) $(LIBFT) $(OBJ) ./mlx_mac/$(MLX) $(MAC_FLAGS) -o $(NAME)
 else ifeq ($(UNAME), Linux)
 	@$(MAKE) all -C ./mlx_linux/
-	@$(CC) $(INC) $(LIBFT) $(OBJ) ./mlx_linux/$(MLX) $(LINUX_FLAGS) -o $(NAME)
+	@$(CC) $(FLAGS) $(LIBFT) $(OBJ) ./mlx_linux/$(MLX) $(LINUX_FLAGS) -o $(NAME)
 else
 	@echo "The platform is not supported."
 endif
@@ -49,6 +47,7 @@ clean:
 
 		
 fclean: clean
+	@$(MAKE) fclean -C $(dir $(LIBFT))
 ifeq ($(UNAME), Darwin) 
 	@$(MAKE) clean -C ./mlx_mac/
 else
