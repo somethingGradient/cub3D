@@ -1,4 +1,3 @@
-
 NAME		= cub3D
 
 CC			= gcc
@@ -19,7 +18,7 @@ MLX			= libmlx.a
 MAC_FLAGS	= -framework OpenGL -framework AppKit
 LINUX_FLAGS	= -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
 
-UNAME		:=	$(shell uname)
+UNAME		:= $(shell uname)
 
 all: $(NAME)
 
@@ -27,24 +26,22 @@ $(NAME): $(OBJ) $(HEADER)
 	@$(MAKE) all -C $(dir $(LIBFT))
 ifeq ($(UNAME), Darwin) 
 	@$(MAKE) all -C ./mlx_mac/
-	@$(CC) $(FLAGS) $(OBJ) $(LIBFT)  ./mlx_mac/$(MLX) $(MAC_FLAGS) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) $(LIBFT) ./mlx_mac/$(MLX) $(MAC_FLAGS) -o $(NAME)
 else ifeq ($(UNAME), Linux)
 	@$(MAKE) all -C ./mlx_linux/
-	@$(CC) $(FLAGS) $(OBJ) $(LIBFT)  ./mlx_linux/$(MLX) $(LINUX_FLAGS) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) $(LIBFT) ./mlx_linux/$(MLX) $(LINUX_FLAGS) -o $(NAME)
 else
-	@echo "The platform is not supported."
+	@echo "\033[1;31m"The platform is not supported."\033[0m"
 endif
 	@echo "\033[36;1m"Compiled!"\033[0m"
 
 $(OBJ): $(SRC)
 	@$(CC) -c -o $@ $<
 
-
 clean:
 	@$(MAKE) clean -C $(dir $(LIBFT))
 	@rm -rf $(OBJ)
 	@echo "\033[1;35m"Cleaned!"\033[0m"
-
 		
 fclean: clean
 	@$(MAKE) fclean -C $(dir $(LIBFT))
