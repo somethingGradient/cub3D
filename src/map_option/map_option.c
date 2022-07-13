@@ -41,10 +41,7 @@ int	get_resolution(t_map *options, char *line, int i)
 			if (line[i] == ' ')
 				continue ;
 			if (!ft_isdigit(line[i]))
-			{
-				printf("Ошибка в настройках размера окна №1.\n");
 				return (ERROR);
-			}
 		}
 		str = ft_substr(line, i, ft_strlen(line) - i);
 		if (!str)
@@ -62,7 +59,6 @@ int	get_resolution(t_map *options, char *line, int i)
 			{  
 				if (!ft_isdigit(str[k]))
 				{
-					printf("Ошибка в настройках размера окна №2.\n");
 					free(str);
 					str = NULL;
 					return (ERROR);
@@ -74,7 +70,6 @@ int	get_resolution(t_map *options, char *line, int i)
 				options->R_width = ft_atoi(line);
 				if (options->R_width <= 0)
 				{
-					printf("Некорректная ширина окна.\n");
 					free(str);
 					str = NULL;
 					return (ERROR);
@@ -84,7 +79,6 @@ int	get_resolution(t_map *options, char *line, int i)
 			options->R_height = ft_atoi(str + k + 1);
 			if (options->R_height <= 0)
 			{
-				printf("Некорректная высота окна.\n");
 				free(str);
 				str = NULL;
 				return (ERROR);
@@ -97,7 +91,6 @@ int	get_resolution(t_map *options, char *line, int i)
 	else
 	{
 		free(str);
-		printf("Дубликация параметров окна.\n");
 		return (ERROR);
 	}
 }
@@ -114,6 +107,7 @@ int get_element_by_sprites(char **vector, char *line, int i, char first_char, ch
 			{
 				*vector = ft_substr(line, i, ft_strlen(*vector) - i);
 				if (*vector == NULL)
+
 					return (ERROR);
 				i = -1;
 				while ((*vector)[++i])
@@ -127,25 +121,17 @@ int get_element_by_sprites(char **vector, char *line, int i, char first_char, ch
 			else
 				return (ERROR);
 		}
-		if (*vector == NULL)
-			return (ERROR);
 	}
 }
 
 int	get_sprites(t_map *options, char *line, int i)
 {
-	char	*temp;
-	int		k;
-
 	if (get_element_by_sprites(&options->nord, line, i, 'N', 'O') == ERROR
 		|| get_element_by_sprites(&options->south, line, i, 'S', 'O') == ERROR
 		|| get_element_by_sprites(&options->west, line, i, 'W', 'E') == ERROR
 		|| get_element_by_sprites(&options->east, line, i, 'E', 'A') == ERROR
 		|| get_element_by_sprites(&options->sprite, line, i, 'S', ' ') == ERROR)
-		{
-
 		return (ERROR);
-		}
 	return (SUCCESS);
 }
 
@@ -162,8 +148,8 @@ t_bool check_chars(t_map *options, char *line)
 			|| line[i] == 'W' || line[i] == 'E'
 			|| line[i] == 'F' || line[i] == 'C')
 		{
-			get_resolution(options, line, i);
-			if (get_sprites(options, line, i) == ERROR)
+			if (get_resolution(options, line, i) == ERROR
+				|| get_sprites(options, line, i) == ERROR)
 				return (ERROR);
 			return (SUCCESS);
 		}
@@ -177,21 +163,10 @@ t_bool check_chars(t_map *options, char *line)
 	return (SUCCESS);
 }
 
-int	get_map_options(t_game *game, char *filename)
+int	init_map_options(t_game *game)
 {
-	int	fd;
-	char *temp = NULL;
 	t_map	*options;
 
-	temp = NULL;
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (ERROR);
-	if (read_map_file(fd, &temp, 0) == ERROR)
-	{
-		printf("Error in reading map.");
-		return (ERROR);
-	}
 	options = NULL;
 	options = (t_map *)malloc(sizeof(*options));
 	if (!options)
@@ -205,30 +180,28 @@ int	get_map_options(t_game *game, char *filename)
 	options->ceil = NULL;
 	options->R_width = -1;
 	options->R_height = -1;
+	game->options = options;
+	options = NULL;
+}
 
+int	parse_options(t_map *options, char *map_tmp, int i, int k, char *line)
+{
+	int status;
 
-	char *line = NULL;
-	int k = -1;
-	int	i = -1;
-	int status = 0;
-	while (temp[++i])
+	while (map_tmp[++i])
 	{
-		k = i - 1;
-		while (temp[++k])
-		{
-			if (temp[k] == '\n')
-				break ;
-		}
+		k = i;
+		while (map_tmp[k] && map_tmp[k] != '\n')
+			k++;
 		line = NULL;
-		line = ft_substr(temp, i, k - i);
-
+		line = ft_substr(map_tmp, i, k - i);
 		if (ft_strlen(line) > 2)
 		{
 			status = check_chars(options, line);
 			if (status == ERROR)
 			{
 				free(line);
-				printf("Ошибка в настройке спрайтов.");
+				printf("Ошибка в настройке параметров карты.\n");
 				return (ERROR);
 			}
 			else if (status == 2)
@@ -236,87 +209,37 @@ int	get_map_options(t_game *game, char *filename)
 				// printf("%s %d\n", "карта начинается здесь ", i);
 				break ;
 			}
-
 		}
 		free(line);
 		i = k;
 	}
+}
 
-	printf("|%s|\n", options->nord);
-	printf("|%s|\n", options->south);
-	printf("|%s|\n", options->west);
-	printf("|%s|\n", options->east);
-	printf("|%s|\n", options->sprite);
+int	get_map_options(t_game *game, char *filename)
+{
+	int		fd;
+	char	*temp;
 
-	// printf("%d %d\n", options->R_width, options->R_height);
-
-	/*
-	temp = get_next_line(fd);
-	while (temp)
+	temp = NULL;
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (ERROR);
+	if (read_map_file(fd, &temp, 0) == ERROR
+		|| init_map_options(game) == ERROR)
 	{
-		if (ft_strlen(temp) > 2)
-		{
-			flag = che+-ck_chars(temp);
-			if (flag == ERROR)
-			{
-				printf("Лишний символ.\n");
-				free(options);
-				free(temp);
-				temp = NULL;
-				return (ERROR);
-			}
-			else if (flag == 2)
-				break ;
-			// if (get_resolution(options, temp) == ERROR)
-			// {
-			// 	// printf("Лишний символ в пустой строке.\n");
-			// 	free(options);
-			// 	free(temp);
-			// 	return (ERROR);
-			// }
-	// 		// if (temp[0] == 'R' && temp[1] == ' ')
-	// 		// 	value = ft_substr(temp, 2, ft_strlen(temp) - 3);
-	// 		// get_resolution(options, temp);
-
-	// 		// else if (temp[0] == 'S' && temp[1] == ' ')
-	// 		// 	value = ft_substr(temp, 2, ft_strlen(temp) - 3);
-
-	// 		// else if (temp[0] == 'F' && temp[1] == ' ')
-	// 		// 	value = ft_substr(temp, 2, ft_strlen(temp) - 3);
-
-	// 		// else if (temp[0] == 'C' && temp[1] == ' ')
-	// 		// 	value = ft_substr(temp, 2, ft_strlen(temp) - 3);
-
-	// 		// else if (temp[0] == 'N' && temp[1] == 'O' && temp[2] == ' ')
-	// 		// 	value = ft_substr(temp, 3, ft_strlen(temp) - 4);
-
-	// 		// else if (temp[0] == 'S' && temp[1] == 'O' && temp[2] == ' ')
-	// 		// 	value = ft_substr(temp, 3, ft_strlen(temp) - 4);
-
-	// 		// else if (temp[0] == 'W' && temp[1] == 'E' && temp[2] == ' ')
-	// 		// 	value = ft_substr(temp, 3, ft_strlen(temp) - 4);
-
-	// 		// else if (temp[0] == 'E' && temp[1] == 'A' && temp[2] == ' ')
-	// 		// 	value = ft_substr(temp, 3, ft_strlen(temp) - 4);
-
-	// 		// else
-	// 		// 	printf("Bad params.\n");
-
-	// 		// printf("|%s|", temp);
-
-		
-		}
-		free(temp);
-		temp = get_next_line(fd);
-		// printf("%s\n", value);
+		printf("Error init map.");
+		return (ERROR);
 	}
-	*/
+	parse_options(game->options, temp, -1, -1, NULL);
 
-
-// printf("%d %d", options->R_width, options->R_height);
+	printf("|%s|\n", game->options->nord);
+	printf("|%s|\n", game->options->south);
+	printf("|%s|\n", game->options->west);
+	printf("|%s|\n", game->options->east);
+	printf("|%s|\n", game->options->sprite);
 
 close(fd);
 free(temp);
-free(options);
+free(game->options);
 return (SUCCESS);
 }

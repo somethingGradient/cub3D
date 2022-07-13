@@ -23,12 +23,6 @@
 
 typedef char t_bool;
 
-typedef struct	s_game
-{
-	int a;
-}	t_game;
-
-
 typedef struct	s_map
 {
 	int		R_width;
@@ -40,9 +34,14 @@ typedef struct	s_map
 	char	*east;
 
 	char	*sprite;
-	char	*floor;
-	char	*ceil;
+	int	*floor;
+	int	*ceil;
 }	t_map;
+
+typedef struct s_game
+{
+	t_map *options;
+} t_game;
 
 char	*get_next_line(int fd);
 

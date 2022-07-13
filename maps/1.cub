@@ -5,6 +5,7 @@ R 800 600
 NO ./maps/1.cub
 SO ./maps/2.cub
 WE ./maps/3.cub
+
 EA ./maps/4.cub
 S ./maps/5.cub
 F 220,100,0
