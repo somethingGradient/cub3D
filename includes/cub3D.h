@@ -49,5 +49,7 @@ char	*get_next_line(int fd);
 
 
 int	get_map_options(t_game *game, char *filename);
+int	get_resolution(t_map *options, char *line, int i, char	*temp, int k);
+
 
 #endif

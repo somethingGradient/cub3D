@@ -8,7 +8,7 @@ HEADER		= ./includes/cub3D.h
 
 SRC_LIST	=	main.c \
 				utils/get_next_line_bonus.c \
-				map_option/map_option.c \
+				map_option/map_option.c map_option/get_resolution.c \
 
 SRC			= $(addprefix src/, $(SRC_LIST))
 
