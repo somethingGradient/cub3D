@@ -6,11 +6,13 @@ FLAGS		= -Wall -Wextra -Werror
 
 HEADER		= ./includes/cub3D.h
 
-SRC_LIST	= main.c
+SRC_LIST	=	main.c \
+				utils/get_next_line_bonus.c \
+				map_option/map_option.c \
 
 SRC			= $(addprefix src/, $(SRC_LIST))
 
-OBJ			= $(SRC:.c=.o)
+OBJ			= $(SRC:%.c=%.o)
 
 LIBFT		= ./libft/libft.a
 
@@ -23,32 +25,32 @@ UNAME		:= $(shell uname)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	@$(MAKE) all -C $(dir $(LIBFT))
+	@#@$(MAKE) all -C $(dir $(LIBFT))
 ifeq ($(UNAME), Darwin) 
-	@$(MAKE) all -C ./mlx_mac/
+	@#@$(MAKE) all -C ./mlx_mac/
 	@$(CC) $(FLAGS) $(OBJ) $(LIBFT) ./mlx_mac/$(MLX) $(MAC_FLAGS) -o $(NAME)
 else ifeq ($(UNAME), Linux)
-	@$(MAKE) all -C ./mlx_linux/
+	@#@$(MAKE) all -C ./mlx_linux/
 	@$(CC) $(FLAGS) $(OBJ) $(LIBFT) ./mlx_linux/$(MLX) $(LINUX_FLAGS) -o $(NAME)
 else
 	@echo "\033[1;31m"The platform is not supported."\033[0m"
 endif
 	@echo "\033[36;1m"Compiled!"\033[0m"
 
-$(OBJ): $(SRC)
-	@$(CC) -c -o $@ $<
+%.o: %.c
+	@$(CC) -c $< -o $@
 
 clean:
-	@$(MAKE) clean -C $(dir $(LIBFT))
+	@#@$(MAKE) clean -C $(dir $(LIBFT))
 	@rm -rf $(OBJ)
 	@echo "\033[1;35m"Cleaned!"\033[0m"
 		
 fclean: clean
-	@$(MAKE) fclean -C $(dir $(LIBFT))
+	@#@$(MAKE) fclean -C $(dir $(LIBFT))
 ifeq ($(UNAME), Darwin) 
-	@$(MAKE) clean -C ./mlx_mac/
+	@#@$(MAKE) clean -C ./mlx_mac/
 else
-	@$(MAKE) clean -C ./mlx_linux/
+	@#@$(MAKE) clean -C ./mlx_linux/
 endif
 	@rm -rf $(NAME)
 	@echo "\033[1;34m"Full cleaned!"\033[0m"
