@@ -1,0 +1,15 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/akitty/Documents/cub3D'
+gcc -c src/main.c -o src/main.o
+ 
+gcc -c src/utils/get_next_line_bonus.c -o src/utils/get_next_line_bonus.o
+gcc -c src/map_option/map_option.c -o src/map_option/map_option.o
+#@/Applications/Xcode.app/Contents/Developer/usr/bin/make all -C ./libft/
+ 
+#@/Applications/Xcode.app/Contents/Developer/usr/bin/make all -C ./mlx_mac/
+ 
+gcc -Wall -Wextra -Werror src/main.o src/utils/get_next_line_bonus.o src/map_option/map_option.o ./libft/libft.a ./mlx_mac/libmlx.a -framework OpenGL -framework AppKit -o cub3D
+echo "\033[36;1m"Compiled!"\033[0m"
+ 
+make: Leaving directory `/Users/akitty/Documents/cub3D'
+ 

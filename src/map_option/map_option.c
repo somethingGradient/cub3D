@@ -27,58 +27,6 @@ static int	read_map_file(int fd, char **result, int i)
 	return (SUCCESS);
 }
 
-int	get_resolution_aux(t_map *options, char *temp, char *str)
-{
-	int	i;
-	int	k;
-
-	// if (options->R_width == -1 && options->R_height == -1)
-	// {
-		i = -1;
-		while (str[++i] && str[i] != '\n')
-		{
-			k = -1;
-			while (str[++k] != ' ')
-			{
-				if (!ft_isdigit(str[k]))
-				{
-					printf("Ошибка в настройках размера окна.\n");
-					free(str);
-					str = NULL;
-					return (ERROR);
-				}
-			}
-			temp = ft_substr(str, i, k);
-			i += k;
-			if (options->R_width == -1)
-			{
-				options->R_width = ft_atoi(temp);
-				if (options->R_width <= 0)
-				{
-					printf("Некорректная ширина окна.\n");
-					free(temp);
-					free(str);
-					str = NULL;
-					return (ERROR);
-				}
-			}
-
-			free(temp);
-			options->R_height = ft_atoi(temp);
-			if (options->R_height <= 0)
-			{
-				printf("Некорректная высота окна.\n");
-				free(temp);
-				free(str);
-				str = NULL;
-				return (ERROR);
-			}
-			free(temp);
-		}
-		free(str);
-	// }
-}
-
 int	get_resolution(t_map *options, char *line, int i)
 {
 	char	*str;
@@ -158,16 +106,13 @@ int get_element_by_sprites(char **vector, char *line, int i, char first_char, ch
 {
 	if (line[i++] == first_char)
 	{
-		if (line[i] == second_char && line[i++] != ' ')
+		if (line[i++] == second_char)
 		{
 			while (line[i] == ' ')
 				i++;
-
 			if ((*vector) == NULL)
 			{
 				*vector = ft_substr(line, i, ft_strlen(*vector) - i);
-		
-
 				if (*vector == NULL)
 					return (ERROR);
 				i = -1;
@@ -176,27 +121,15 @@ int get_element_by_sprites(char **vector, char *line, int i, char first_char, ch
 					if ((*vector)[i] == ' ')
 						return (ERROR);
 				}
-				printf("|%s|\n", *vector);
 				if (access(*vector, 0) == -1 || access(*vector, 3) == -1)
-				{
-					printf("Файл спрайта недоступен.\n");
 					return (ERROR);
-				}
 			}
 			else
-			{
-				printf("Дубликация параметра спрайта.\n");
 				return (ERROR);
-			}
 		}
-		else
-		{
-			printf("Ошибка в названии параметра.\n");
+		if (*vector == NULL)
 			return (ERROR);
-		}
 	}
-	else
-		return (SUCCESS);
 }
 
 int	get_sprites(t_map *options, char *line, int i)
@@ -209,12 +142,11 @@ int	get_sprites(t_map *options, char *line, int i)
 		|| get_element_by_sprites(&options->west, line, i, 'W', 'E') == ERROR
 		|| get_element_by_sprites(&options->east, line, i, 'E', 'A') == ERROR
 		|| get_element_by_sprites(&options->sprite, line, i, 'S', ' ') == ERROR)
-	{
+		{
 
-		printf("Ошибка в настройке спрайтов.");
 		return (ERROR);
-	}
-
+		}
+	return (SUCCESS);
 }
 
 t_bool check_chars(t_map *options, char *line)
@@ -231,25 +163,19 @@ t_bool check_chars(t_map *options, char *line)
 			|| line[i] == 'F' || line[i] == 'C')
 		{
 			get_resolution(options, line, i);
-
-			if (get_sprites(options, line, i) == -1)
+			if (get_sprites(options, line, i) == ERROR)
 				return (ERROR);
-
 			return (SUCCESS);
 		}
 		if (line[i] == '1')
 			return (2);
 		if (line[i] != ' ' && line[i] != '\n')
-		{
-			printf("Лишний символ в строке.\n");
 			return (ERROR);
-		}
 		if (line[i] == '\n')
 			break ;
 	}
 	return (SUCCESS);
 }
-
 
 int	get_map_options(t_game *game, char *filename)
 {
@@ -284,6 +210,7 @@ int	get_map_options(t_game *game, char *filename)
 	char *line = NULL;
 	int k = -1;
 	int	i = -1;
+	int status = 0;
 	while (temp[++i])
 	{
 		k = i - 1;
@@ -297,17 +224,30 @@ int	get_map_options(t_game *game, char *filename)
 
 		if (ft_strlen(line) > 2)
 		{
-			if (check_chars(options, line) == ERROR)
+			status = check_chars(options, line);
+			if (status == ERROR)
+			{
+				free(line);
+				printf("Ошибка в настройке спрайтов.");
 				return (ERROR);
+			}
+			else if (status == 2)
+			{
+				// printf("%s %d\n", "карта начинается здесь ", i);
+				break ;
+			}
 
 		}
-		
-
-
 		free(line);
 		i = k;
 	}
+
 	printf("|%s|\n", options->nord);
+	printf("|%s|\n", options->south);
+	printf("|%s|\n", options->west);
+	printf("|%s|\n", options->east);
+	printf("|%s|\n", options->sprite);
+
 	// printf("%d %d\n", options->R_width, options->R_height);
 
 	/*
