@@ -36,6 +36,9 @@ typedef struct	s_map
 	char	*sprite;
 	int	*floor;
 	int	*ceil;
+
+	char **map;
+
 }	t_map;
 
 typedef struct s_game
@@ -44,7 +47,6 @@ typedef struct s_game
 } t_game;
 
 char	*get_next_line(int fd);
-
 
 
 
