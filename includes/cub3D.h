@@ -37,13 +37,12 @@ typedef struct	s_map
 	int	*floor;
 	int	*ceil;
 
-	char **map;
-
 }	t_map;
 
 typedef struct s_game
 {
 	t_map *options;
+	char **map;
 } t_game;
 
 char	*get_next_line(int fd);

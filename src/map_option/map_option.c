@@ -115,6 +115,7 @@ int	init_map_options(t_game *game)
 	options->R_width = -1;
 	options->R_height = -1;
 	game->options = options;
+	game->map = NULL;
 	options = NULL;
 }
 
@@ -137,50 +138,64 @@ int	parse_options(t_map *options, char *map_tmp, int i, int k, char *line, int f
 		line = get_next_line(fd);
 	}
 	return (ERROR);
-/*
-	int status;
-	while (map_tmp[++i])
-	{
-		k = i;
-		while (map_tmp[k] && map_tmp[k] != '\n')
-			k++;
-		line = NULL;
-		line = ft_substr(map_tmp, i, k - i);
-		if (ft_strlen(line) > 2)
-		{
-			status = check_chars(options, line);
-			if (status == 2)
-			{
-				free(line);
-				return (i);
-			}
-		}
-		free(line);
-		i = k;
-	}
-	return (ERROR);
-*/
 }
 
-char **get_map(char *filename)
+char	**malloc_map(char *filename)
 {
-	char *line;
-	int fd2 = open(filename, O_RDONLY);
-	if (fd2 < 0)
+	int		fd_for_lines;
+	int		count_lines;
+	char	*line;
+	char	**map;
+
+	line = NULL;
+	map = NULL;
+	fd_for_lines = open(filename, O_RDONLY);
+	if (fd_for_lines < 0)
 		return (NULL);
-	int count_lines = 0;
-	line = get_next_line(fd2);
+	count_lines = 0;
+	line = get_next_line(fd_for_lines);
+	int i =-1;
+	char *temp = NULL;
 	while (line)
 	{
+		i = -1;
+		while (line[++i] && !temp)
+		{
+			if (line[i] == ' ')
+				continue ;
+			if (line[i] != '1')
+				break ;
+			if (line[i] == '1')
+				temp = ft_strdup(line);
+		}
 		count_lines++;
 		free(line);
-		line = get_next_line(fd2);
+		line = get_next_line(fd_for_lines);
 	}
+	close(fd_for_lines);
+	map = (char **)malloc(sizeof(char *) * count_lines + 1);
+	if (!map)
+		return (NULL);
+	map[0] = temp;
+	temp = NULL;
+	map[count_lines] = NULL;
+	return (map);
+}
 
-	char **map;
-	int k = 0;
-	printf("%d\n", count_lines);
-	map = (char **)malloc(sizeof(char *) * count_lines);
+int	get_map(t_game *game, int fd)
+{
+	char	*line;
+	int		i;
+
+	line = NULL;
+	line = get_next_line(fd);
+	i = 0;
+	while (line)
+	{
+		game->map[++i] = line;
+		line = NULL;
+		line = get_next_line(fd);
+	}
 }
 
 int	get_map_options(t_game *game, char *filename)
@@ -192,29 +207,28 @@ int	get_map_options(t_game *game, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (ERROR);
-	if ( init_map_options(game) == ERROR)
+	if (init_map_options(game) == ERROR)
 	{
 		printf("Error init map.");
 		return (ERROR);
 	}
 	parse_options(game->options, temp, -1, -1, NULL, fd);
-	// printf("%d", index_of_begin_map);
 	
-	get_map(filename);
-	
+	game->map = malloc_map(filename);
+	get_map(game, fd);
 
 
-	printf("%d\n", game->options->R_width);
-	printf("%d\n", game->options->R_height);
-	printf("%s", game->options->nord);
-	printf("%s", game->options->south);
-	printf("%s", game->options->west);
-	printf("%s", game->options->east);
-	printf("%s", game->options->sprite);
+	// printf("%d\n", game->options->R_width);
+	// printf("%d\n", game->options->R_height);
+	// printf("%s", game->options->nord);
+	// printf("%s", game->options->south);
+	// printf("%s", game->options->west);
+	// printf("%s", game->options->east);
+	// printf("%s", game->options->sprite);
 
 
 	close(fd);
 	free(temp);
-	free(game->options);
+	
 	return (SUCCESS);
 }
