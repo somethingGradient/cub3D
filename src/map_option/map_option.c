@@ -1,4 +1,3 @@
-
 #include "../../includes/cub3D.h"
 
 static int	read_map_file(int fd, char **result, int i)

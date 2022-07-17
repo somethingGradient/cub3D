@@ -11,6 +11,9 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+//#include <X.h>
+#include <X11/X.h>
+#include <math.h>
 
 
 # define TRUE 1
@@ -20,6 +23,27 @@
 # define ERROR -1
 
 # define BUFFER_SIZE 42
+
+# define SCREEN_W 2560
+# define SCREEN_H 1440
+# define ROT 0.050
+# define MOV 0.1
+# define COL 2.5
+# define MMP_DECA g_game.window.width / 100
+# define MMP_SIZE g_game.window.width / 10
+# define FOG 7
+
+# define LEFT 97
+# define RIGHT 100
+# define DOWN 115
+# define UP 119
+
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
+# define ARROW_DOWN 65364
+# define ARROW_UP 65362
+
+# define ESC 65307
 
 typedef char t_bool;
 
@@ -39,18 +63,173 @@ typedef struct	s_map
 
 }	t_map;
 
+typedef struct	s_color
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_color;
+
+typedef struct	s_img
+{
+	void		*ptr;
+	char		*data;
+	int			bpp;
+	int			size;
+	int			endian;
+}				t_img;
+
+typedef struct	s_xpm
+{
+	char		*path;
+	t_img		img;
+	int			height;
+	int			width;
+}				t_xpm;
+
+typedef struct	s_texture
+{
+	t_xpm		north;
+	t_xpm		south;
+	t_xpm		west;
+	t_xpm		east;
+	t_xpm		sprite;
+	t_xpm		floor;
+	t_xpm		ceiling;
+}				t_texture;
+
+typedef struct	s_window
+{
+	int			*mlx;
+	int			*win;
+	int			height;
+	int			width;
+}				t_window;
+
+typedef struct	s_draw
+{
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	int			h;
+	int			w;
+	int			x;
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			map_x;
+	int			map_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
+	double		init_wall_dist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	t_color		color;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	double		old_dir_x;
+	double		old_plane_x;
+	double		wall_x;
+	int			tex_x;
+	int			tex_y;
+	double		floor_x_w;
+	double		floor_y_w;
+	double		dist_w;
+	double		dist_player;
+	double		dist_current;
+	double		weight;
+	double		floor_x;
+	double		floor_y;
+	int			ftex_x;
+	int			ftex_y;
+	int			checker_board_pattern;
+	int			floor_texture;
+	char		fog;
+	t_xpm		xpm;
+
+}				t_draw;
+
+typedef struct	s_life
+{
+	int			life;
+	int			health;
+	int			inithealth;
+	int			sub;
+}				t_life;
+
 typedef struct s_game
 {
 	t_map *options;
 	char **map;
+
+	double		posx;
+	double		posy;
+	char		orient;
+	int			fd;
+	char		*pathmap;
+	char		**map;
+	char		save;
+	char		*error;
+	char		iserrno;
+	char		*exec;
+	char		*next;
+	t_img		img;
+	t_window	window;
+	t_texture	texture;
+	t_draw		draw;
+	t_life		life;
 } t_game;
 
+t_game g_game;
+
+//GNL
 char	*get_next_line(int fd);
 
-
-
+//PARSING
+int		open_textures_file(t_xpm *xpm)
+int		open_textures(void);
 int	get_map_options(t_game *game, char *filename);
 int	get_resolution(t_map *options, char *line, int i, char	*temp, int k);
+//HOOKS
+int		key_hook(int key);
+int		close_hook(int key);
+//COLOR
+t_color	create_rgbcolor(char c);
+t_color	create_tcolor(int color);
+//IMG
+t_img	create_img(void);
+t_img	create_hud(t_img img, t_draw draw);
+t_color	img_get_px(t_img img, int x, int y);
+void	img_set_px(t_color color, t_img img, int x, int y);
+//HUD_CROSS
+t_img	hud_cross(t_img img);
+//HUD_MINIMAP
+t_img		hud_minimap(t_img img, t_draw draw);
+//HUD_LIFE
+t_img	hud_life(t_img img);
+//DRAW
+void	draw(void);
+t_draw	init_draw(t_draw draw, int state);
+t_draw	get_orient(t_draw draw);
+t_draw	get_dist(t_draw draw);
+t_draw	get_drawpos(t_draw draw);
+//DRAW_GET_DIST
+int		draw_get_dist(t_draw draw);
+t_draw	draw_get_perpdist(t_draw draw);
+//DRAW_EXTERN
+t_img	draw_extern(t_draw draw, t_img img);
+//START_MLX
+void	set_start_orient(void)
+
 
 
 #endif
