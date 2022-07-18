@@ -1,6 +1,6 @@
 NAME		= cub3D
 
-CC			= gcc
+CC			= clang
 
 FLAGS		= -Wall -Wextra -Werror
 
@@ -8,15 +8,19 @@ HEADER		= ./includes/cub3D.h
 
 SRC_LIST	=	main.c \
 				utils/get_next_line_bonus.c \
-				utils/updstate \
+				utils/updstate.c \
+				utils/error_msg.c \
+				utils/utils.c \
 				map_option/map_option.c \
 				map_option/get_resolution.c \
 				map_option/open_textures.c \
 				rendering/color.c \
 				rendering/draw_extern.c \
-				rendering/draw_get_dist \
+				rendering/draw_get_dist.c \
 				rendering/draw.c \
 				rendering/hook.c \
+				rendering/hook_rotate.c \
+				rendering/hook_move.c \
 				rendering/hud_cross.c \
 				rendering/hud_life.c \
 				rendering/hud_minimap.c \

@@ -133,10 +133,7 @@ void	draw(void)
 			256) : create_rgbcolor('n'), img, draw.x, draw.draw_start++);
 	}
 	img = create_hud(img, draw);
-	if (g_game.save == 1)
-		export_as_bmp("save.bmp", img.data, draw.w, draw.h);
-	else
-		mlx_put_image_to_window(
-			g_game.window.mlx, g_game.window.win, img.ptr, 0, 0);
+	mlx_put_image_to_window(
+		g_game.window.mlx, g_game.window.win, img.ptr, 0, 0);
 	g_game.img = img;
 }

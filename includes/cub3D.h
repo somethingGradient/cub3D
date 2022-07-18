@@ -176,7 +176,6 @@ typedef struct s_game
 	char		orient;
 	int			fd;
 	char		*pathmap;
-	char		**map;
 	char		save;
 	char		*error;
 	char		iserrno;
@@ -191,17 +190,22 @@ typedef struct s_game
 
 t_game g_game;
 
-//GNL
+//UTILS
 char	*get_next_line(int fd);
-
+int		updstate(void);
+int		error_msg(char *context);
+size_t	ft_tablen(void **tab);
 //PARSING
-int		open_textures_file(t_xpm *xpm)
+int		open_textures_file(t_xpm *xpm);
 int		open_textures(void);
 int	get_map_options(t_game *game, char *filename);
 int	get_resolution(t_map *options, char *line, int i, char	*temp, int k);
 //HOOKS
 int		key_hook(int key);
 int		close_hook(int key);
+void	hook_move(int key);
+void	hook_translate(int key);
+void	hook_action(void);
 //COLOR
 t_color	create_rgbcolor(char c);
 t_color	create_tcolor(int color);
@@ -228,7 +232,7 @@ t_draw	draw_get_perpdist(t_draw draw);
 //DRAW_EXTERN
 t_img	draw_extern(t_draw draw, t_img img);
 //START_MLX
-void	set_start_orient(void)
+void	set_start_orient(void);
 
 
 
