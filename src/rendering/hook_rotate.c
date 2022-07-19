@@ -6,7 +6,7 @@ void	hook_rotate(int key, double initrot)
 	double	rot;
 
 	rot = ((initrot == 0) ? ROT : initrot);
-	d = &g_data.draw;
+	d = &g_game.draw;
 	if (key == ARROW_LEFT)
 	{
 		d->old_dir_x = d->dir_x;

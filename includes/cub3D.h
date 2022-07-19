@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
-//#include <X.h>
 #include <X11/X.h>
 #include <math.h>
 
@@ -195,6 +194,8 @@ char	*get_next_line(int fd);
 int		updstate(void);
 int		error_msg(char *context);
 size_t	ft_tablen(void **tab);
+int		endofprog(void);
+void	free_img(t_xpm *xpm);
 //PARSING
 int		open_textures_file(t_xpm *xpm);
 int		open_textures(void);
