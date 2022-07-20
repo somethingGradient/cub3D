@@ -196,6 +196,8 @@ int		error_msg(char *context);
 size_t	ft_tablen(void **tab);
 int		endofprog(void);
 void	free_img(t_xpm *xpm);
+void	next_map(void);
+void	free_2d(void **arg);
 //PARSING
 int		open_textures_file(t_xpm *xpm);
 int		open_textures(void);
@@ -207,6 +209,7 @@ int		close_hook(int key);
 void	hook_move(int key);
 void	hook_translate(int key);
 void	hook_action(void);
+void	hook_rotate(int key, double initrot);
 //COLOR
 t_color	create_rgbcolor(char c);
 t_color	create_tcolor(int color);
@@ -221,6 +224,7 @@ t_img	hud_cross(t_img img);
 t_img		hud_minimap(t_img img, t_draw draw);
 //HUD_LIFE
 t_img	hud_life(t_img img);
+void	sub_life(void);
 //DRAW
 void	draw(void);
 t_draw	init_draw(t_draw draw, int state);

@@ -13,6 +13,7 @@ SRC_LIST	=	main.c \
 				utils/utils.c \
 				utils/endofprog.c \
 				utils/free.c \
+				utils/next_map.c \
 				map_option/map_option.c \
 				map_option/get_resolution.c \
 				map_option/open_textures.c \

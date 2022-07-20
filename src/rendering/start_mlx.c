@@ -25,7 +25,7 @@ int		mouse_hook(int x, int y)
 	{
 		printf("%.3d %.3d\n", x - g_game.window.width / 2,
 								y - g_game.window.height / 2);
-		sleep(0.5);
+		usleep(500);
 		mlx_mouse_move(g_game.window.mlx, g_game.window.win,
 			g_game.window.width / 2, g_game.window.height / 2);
 	}
@@ -43,8 +43,6 @@ int		start_mlx(void)
 	g_game.orient = g_game.map[(int)g_game.posx][(int)g_game.posy];
 	g_game.draw = init_draw(g_game.draw, 0);
 	set_start_orient();
-	if (g_game.save == 1)
-		ft_printf("Saving image...\n");
 	draw();
 	if (g_game.save == 0)
 	{
@@ -54,7 +52,5 @@ int		start_mlx(void)
 											close_hook, g_game.window.mlx);
 		mlx_loop(g_game.window.mlx);
 	}
-	else
-		ft_printf("Saved !\n");
 	return (1);
 }

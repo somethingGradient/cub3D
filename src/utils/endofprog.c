@@ -25,6 +25,6 @@ int		endofprog(void)
 	mlx_destroy_image(g_game.window.mlx, g_game.img.ptr);
 	free(g_game.window.win);
 	free(g_game.window.mlx);
-	ft_printf("End at state %d\n", updstate());
+	//ft_printf("End at state %d\n", updstate());
 	exit(EXIT_SUCCESS);
 }
