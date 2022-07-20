@@ -11,6 +11,8 @@ SRC_LIST	=	main.c \
 				utils/updstate.c \
 				utils/error_msg.c \
 				utils/utils.c \
+				utils/endofprog.c \
+				utils/free.c \
 				map_option/map_option.c \
 				map_option/get_resolution.c \
 				map_option/open_textures.c \

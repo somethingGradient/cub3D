@@ -7,13 +7,13 @@ void	hook_move(int key)
 	char	y;
 	double	op;
 
-	d = &g_data.draw;
+	d = &g_game.draw;
 	op = (key == UP ? d->pos_x + d->dir_x * MOV * COL : d->pos_x - d->dir_x *
 																	MOV * COL);
-	x = g_data.map[(int)(op)][(int)d->pos_y];
+	x = g_game.map[(int)(op)][(int)d->pos_y];
 	op = (key == UP ? d->pos_y + d->dir_y * MOV * COL : d->pos_y - d->dir_y *
 																	MOV * COL);
-	y = g_data.map[(int)d->pos_x][(int)(op)];
+	y = g_game.map[(int)d->pos_x][(int)(op)];
 	if (x == '0' || x == '5')
 		d->pos_x += (key == UP ? 1 : -1) * (d->dir_x * MOV);
 	if (y == '0' || y == '5')
@@ -31,13 +31,13 @@ void	hook_translate(int key)
 	char	y;
 	double	op;
 
-	d = &g_data.draw;
+	d = &g_game.draw;
 	op = (key == LEFT ? d->pos_x - d->dir_y * MOV * COL : d->pos_x + d->dir_y *
 																	MOV * COL);
-	x = g_data.map[(int)(op)][(int)d->pos_y];
+	x = g_game.map[(int)(op)][(int)d->pos_y];
 	op = (key == LEFT ? d->pos_y + d->dir_x * MOV * COL : d->pos_y - d->dir_x *
 																	MOV * COL);
-	y = g_data.map[(int)d->pos_x][(int)(op)];
+	y = g_game.map[(int)d->pos_x][(int)(op)];
 	if (x == '0' || x == '5')
 		d->pos_x += (key == LEFT ? -1 : 1) * (d->dir_y * MOV);
 	if (y == '0' || y == '5')
@@ -54,16 +54,16 @@ void	hook_action(void)
 	int		i;
 	int		j;
 
-	d = &g_data.draw;
+	d = &g_game.draw;
 	i = -2;
 	while (++i <= 1)
 	{
 		j = -2;
 		while (++j <= 1)
 		{
-			if (g_data.map[(int)d->pos_x + i][(int)d->pos_y + j] == '3')
+			if (g_game.map[(int)d->pos_x + i][(int)d->pos_y + j] == '3')
 			{
-				g_data.map[(int)d->pos_x + i][(int)d->pos_y + j] = '0';
+				g_game.map[(int)d->pos_x + i][(int)d->pos_y + j] = '0';
 				draw();
 				break ;
 			}
