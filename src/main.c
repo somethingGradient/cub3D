@@ -59,12 +59,15 @@ static int check_argv(int argc, char **argv)
 			return (1);
 	}
 	printf("Error.\nWrite correct map.\n");
-	exit(0);
+	return (0);
 }
 
 int main(int argc, char **argv)
 {
 	if (check_argv(argc, argv))
-		game_start(argv[1]);
+	{
+		if (!game_start(argv[1]))
+			return (1);
+	}
 	return (0);
 }
