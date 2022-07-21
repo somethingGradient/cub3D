@@ -1,21 +1,34 @@
 #include "../includes/cub3D.h"
 
-//t_game g_game;
-
-static int game_start(char *filename)
+void	init_game(void)
 {
-	// void	*mlx;
-	// void	*mlx_win;
+	g_game.window.height = -1;
+	g_game.window.width = -1;
+	g_game.texture.nord.path = NULL;
+	g_game.texture.south.path = NULL;
+	g_game.texture.west.path = NULL;
+	g_game.texture.east.path = NULL;
+	g_game.texture.sprite.path = NULL;
+	g_game.texture.floor_color = NULL;
+	g_game.texture.ceil_color = NULL;
+	g_game.texture.floor.path = NULL;
+	g_game.texture.ceiling.path = NULL;
+	g_game.next = NULL;
+	g_game.map = NULL;
+	g_game.error = NULL;
+	g_game.posx = -1;
+	g_game.posy = -1;
+	g_game.life.life = -1;
+	g_game.life.health = -1;
+	g_game.life.inithealth = -1;
+	g_game.life.sub = -1;
+}
 
-	// mlx = mlx_init();
-	// mlx_win = mlx_new_window(mlx, 480, 320, "Hello world!");
-	// mlx_loop(mlx);
-
-	// t_game	*game;
-
-	// game = NULL;
-	// game = malloc(sizeof(*game));
-	// get_map_options(game, filename);
+static int game_start()
+{
+	init_game();
+	if (get_map_options() == ERROR)
+		return (ERROR);
 
 	// int i = -1;
 	// while (game->map[++i])
@@ -45,7 +58,7 @@ static int game_start(char *filename)
 
 	// free(game->options);
 	// free(game);
-	// return (1);
+	return (exit_msg("SUCCESS"));
 }
 
 static int check_argv(int argc, char **argv)
@@ -55,19 +68,29 @@ static int check_argv(int argc, char **argv)
 	if (argc == 2)
 	{
 		len = ft_strlen(argv[1]);
-		if (argv[1][len - 1] == 'b' || argv[1][len - 2] == 'u' || argv[1][len - 3] == 'c' || argv[1][len - 4] == '.')
-			return (1);
+		if (argv[1][len - 1] == 'b' || argv[1][len - 2] == 'u'
+			|| argv[1][len - 3] == 'c' || argv[1][len - 4] == '.')
+			g_game.pathmap = argv[1];
+		else
+			return (exit_msg("Wrong filename."));
 	}
-	printf("Error.\nWrite correct map.\n");
-	return (0);
+	else
+		return (exit_msg("Wrong number of arguments."));
+	return (SUCCESS);
 }
 
 int main(int argc, char **argv)
 {
-	if (check_argv(argc, argv))
+	if (check_argv(argc, argv) == SUCCESS)
 	{
-		if (!game_start(argv[1]))
-			return (1);
+		if (game_start() == SUCCESS)
+		{
+			game_end();
+			return (SUCCESS);
+		}
 	}
-	return (0);
+	if (g_game.error != NULL)
+		printf("%s", g_game.error);
+	game_end();
+	return (ERROR);
 }

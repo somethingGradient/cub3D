@@ -7,16 +7,21 @@ FLAGS		= -Wall -Wextra -Werror
 HEADER		= ./includes/cub3D.h
 
 SRC_LIST	=	main.c \
+				\
 				utils/get_next_line_bonus.c \
 				utils/updstate.c \
-				utils/error_msg.c \
+				utils/exit_msg.c \
 				utils/utils.c \
-				utils/endofprog.c \
-				utils/free.c \
+				utils/game_end.c \
 				utils/next_map.c \
+				\
 				map_option/map_option.c \
 				map_option/get_resolution.c \
+				map_option/get_sprite_files.c \
+				map_option/get_colors_arr.c \
+				map_option/get_map.c \
 				map_option/open_textures.c \
+				\
 				rendering/color.c \
 				rendering/draw_extern.c \
 				rendering/draw_get_dist.c \

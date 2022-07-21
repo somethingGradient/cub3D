@@ -9,7 +9,7 @@ void	sub_life(void)
 		g_game.life.life--;
 	}
 	if (g_game.life.life <= 0)
-		endofprog();
+		game_end();
 	g_game.draw.pos_x = g_game.posx;
 	g_game.draw.pos_y = g_game.posy;
 	g_game.draw = init_draw(g_game.draw, 0);

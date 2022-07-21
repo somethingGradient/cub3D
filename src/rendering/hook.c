@@ -11,7 +11,7 @@ int		key_hook(int key)
 	else if (key == 49)
 		hook_action();
 	else if (key == ESC)
-		endofprog();
+		game_end();
 	else if (key == 65289)
 		mlx_mouse_show(g_game.window.mlx, g_game.window.win);
 	else
@@ -23,6 +23,6 @@ int		key_hook(int key)
 int		close_hook(int key)
 {
 	(void)key;
-	endofprog();
+	game_end();
 	return (1);
 }

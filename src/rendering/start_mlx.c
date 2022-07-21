@@ -37,7 +37,7 @@ int		start_mlx(void)
 	g_game.window.win = mlx_new_window(g_game.window.mlx, g_game.window.width,
 		g_game.window.height, "Cub3D");
 	if (open_textures() == 0)
-		return (error_msg("opentext"));
+		return (exit_msg("opentext"));
 	updstate();
 	g_game.img = create_img();
 	g_game.orient = g_game.map[(int)g_game.posx][(int)g_game.posy];

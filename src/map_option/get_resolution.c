@@ -1,41 +1,38 @@
 
 #include "../../includes/cub3D.h"
 
-int resolution_aux(t_map *options, char *str, char *temp, int i, int k)
+static int resolution_aux(char *str, char *temp, int i, int k)
 {
-    if (options->R_width == -1 && options->R_height == -1)
+	while (str[++i] && str[i] != '\n')
 	{
-		while (str[++i] && str[i] != '\n')
+		k = -1;
+		while (str[++k] != ' ')
 		{
-			k = -1;
-			while (str[++k] != ' ')
-			{  
-				if (!ft_isdigit(str[k]))
-					return (ERROR);
-			}
-			temp = ft_substr(str, i, k);
-			if (options->R_width == -1)
-			{
-				options->R_width = ft_atoi(temp);
-				if (options->R_width <= 0)
-					return (ERROR);
-			}
-			free(temp);
-			options->R_height = ft_atoi(str + k + 1);
-			if (options->R_height <= 0)
+			if (!ft_isdigit(str[k]))
 				return (ERROR);
-			i += k;
 		}
+		temp = ft_substr(str, i, k);
+		if (g_game.window.width == -1)
+		{
+			g_game.window.width = ft_atoi(temp);
+			if (g_game.window.width <= 0)
+				return (ERROR);
+		}
+		free(temp);
+		g_game.window.height = ft_atoi(str + k + 1);
+		if (g_game.window.height <= 0)
+			return (ERROR);
+		i += k;
 	}
-	else
-		return (ERROR);
+	return (SUCCESS);
 }
 
-int	get_resolution(t_map *options, char *line, int i, char *temp, int k)
+int	get_resolution(char *line, int i, char *temp)
 {
+	int	status;
+
 	if (line[i] == 'R')
 	{
-		i = 0;
 		while (!ft_isdigit(line[++i]))
 		{
 			if (line[i] == ' ')
@@ -46,11 +43,13 @@ int	get_resolution(t_map *options, char *line, int i, char *temp, int k)
 		temp = ft_substr(line, i, ft_strlen(line) - i);
 		if (!temp)
 			return (ERROR);
+		if (g_game.window.width == -1 && g_game.window.height == -1)
+			status = resolution_aux(temp, NULL, -1, -1);
+		else
+			status = ERROR; // если разрешение дублируется
 	}
 	else
 		return (SUCCESS);
-	i = -1;
-    if (resolution_aux(options, temp, NULL, i, k) == ERROR)
-        free(temp);
-    free(temp);
+	free(temp);
+	return (status);
 }

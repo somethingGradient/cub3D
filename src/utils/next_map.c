@@ -12,5 +12,5 @@ void	next_map(void)
 		argv[2] = 0;
 		execv(g_game.exec, argv);
 	}
-	endofprog();
+	game_end();
 }
