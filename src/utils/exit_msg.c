@@ -1,6 +1,11 @@
 #include "../../includes/cub3D.h"
+<<<<<<< HEAD:src/utils/exit_msg.c
 
 int		exit_msg(char *context)
+=======
+t_game	g_game;
+int		error_msg(char *context)
+>>>>>>> bee0fd97cf1c7b7d53348974f5010531ecb288f8:src/utils/error_msg.c
 {
 	char	*temp;
 

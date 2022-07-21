@@ -191,7 +191,7 @@ typedef struct s_game
 	t_life		life;
 } t_game;
 
-t_game g_game;
+extern t_game g_game;
 
 //UTILS
 char	*get_next_line(int fd);
