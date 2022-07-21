@@ -1,5 +1,5 @@
 #include "../../includes/cub3D.h"
-
+t_game	g_game;
 int		error_msg(char *context)
 {
 	if (ft_strcmp(context, "parsemap") == 0)
