@@ -2,7 +2,7 @@
 
 void	free_2d(void **arg)
 {
-	int		i;
+	int	i;
 
 	if (arg != NULL)
 	{
@@ -24,10 +24,12 @@ void	free_img(t_xpm *xpm)
 	}
 }
 
-int		game_end(void)
+int	game_end(void)
 {
 	if (g_game.error != NULL)
 		free(g_game.error);
+	if (g_game.map != NULL)
+		free_2d((void**)g_game.map);
 	free_img(&(g_game.texture.south));
 	free_img(&(g_game.texture.nord));
 	free_img(&(g_game.texture.west));
@@ -39,8 +41,6 @@ int		game_end(void)
 		free(g_game.texture.ceil_color);
 	if (g_game.texture.floor_color != NULL)
 		free(g_game.texture.floor_color);
-	if (g_game.map != NULL)
-		free_2d((void**)g_game.map);
 	// mlx_destroy_image(g_game.window.mlx, g_game.img.ptr);
 	// free(g_game.window.win);
 	// free(g_game.window.mlx);

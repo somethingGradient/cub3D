@@ -7,7 +7,6 @@ FLAGS		= -Wall -Wextra -Werror
 HEADER		= ./includes/cub3D.h
 
 SRC_LIST	=	main.c \
-				\
 				utils/get_next_line_bonus.c \
 				utils/updstate.c \
 				utils/exit_msg.c \

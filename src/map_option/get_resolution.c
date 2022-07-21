@@ -46,7 +46,7 @@ int	get_resolution(char *line, int i, char *temp)
 		if (g_game.window.width == -1 && g_game.window.height == -1)
 			status = resolution_aux(temp, NULL, -1, -1);
 		else
-			status = ERROR; // если разрешение дублируется
+			status = ERROR;
 	}
 	else
 		return (SUCCESS);

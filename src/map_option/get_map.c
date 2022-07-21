@@ -1,7 +1,7 @@
 
 #include "../../includes/cub3D.h"
 
-char *find_first_wall(int fd, char *temp, int i, int *count_lines)
+char	*find_first_wall(int fd, char *temp, int i, int *count_lines)
 {
 	char	*first_wall;
 
@@ -27,40 +27,42 @@ char *find_first_wall(int fd, char *temp, int i, int *count_lines)
 	return (first_wall);
 }
 
-char	**malloc_map(char *filename)
+int	malloc_map(void)
 {
 	int		fd_for_lines;
 	int		count_lines;
-	char	**map;
-	char *temp;
+	char	*temp;
 
-	map = NULL;
-	fd_for_lines = open(filename, O_RDONLY);
-	if (fd_for_lines < 0)
-		return (NULL);
-	temp = find_first_wall(fd_for_lines, NULL, -1, &count_lines);
-	map = (char **)malloc(sizeof(char *) * count_lines + 1);
-	if (!map || !temp)
-		return (NULL);
-	map[0] = temp;
 	temp = NULL;
-	map[count_lines] = NULL;
-	return (map);
+	fd_for_lines = open(g_game.pathmap, O_RDONLY);
+	if (fd_for_lines < 0)
+		return (ERROR);
+	temp = find_first_wall(fd_for_lines, NULL, -1, &count_lines);
+	g_game.map = (char **)malloc(sizeof(char *) * count_lines + 1);
+	if (!g_game.map || !temp)
+		return (ERROR);
+	g_game.map[0] = temp;
+	temp = NULL;
+	g_game.map[count_lines] = NULL;
+	return (SUCCESS);
 }
 
-int	get_map(t_game *game, int fd)
+int	get_map(void)
 {
-	char	*line;
 	int		i;
+	char	*line;
 
+	if (malloc_map() == ERROR)
+		return (exit_msg("Error of alloc map."));
 	line = NULL;
-	line = get_next_line(fd);
+	line = get_next_line(g_game.fd);
 	i = 0;
 	while (line)
 	{
-		game->map[++i] = line;
+		g_game.map[++i] = line;
 		line = NULL;
-		line = get_next_line(fd);
+		line = get_next_line(g_game.fd);
 	}
+	close(g_game.fd);
 	return (SUCCESS);
 }

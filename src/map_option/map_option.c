@@ -1,7 +1,7 @@
 
 #include "../../includes/cub3D.h"
 
-int	distribute_char(char *line, int i)
+static int	distribute_char(char *line, int i)
 {
 	if (line[i] == 'R')
 	{
@@ -28,7 +28,7 @@ int	distribute_char(char *line, int i)
 	return (SUCCESS);
 }
 
-int	check_chars(char *line, int i)
+static int	check_chars(char *line, int i)
 {
 	int	status;
 
@@ -51,10 +51,8 @@ int	check_chars(char *line, int i)
 	return (SUCCESS);
 }
 
-int	parse_options(char *line, int fd)
+static int	parse_options(char *line, int fd, int status)
 {
-	int	status;
-
 	line = get_next_line(fd);
 	while (line)
 	{	
@@ -66,11 +64,11 @@ int	parse_options(char *line, int fd)
 				free(line);
 				return (SUCCESS);
 			}
-			else if (status == ERROR)
-			{
-				free(line);
-				return (ERROR);
-			}
+		}
+		if (ft_strlen(line) < 2 || status == ERROR)
+		{
+			free(line);
+			return (ERROR);
 		}
 		free(line);
 		line = NULL;
@@ -79,7 +77,7 @@ int	parse_options(char *line, int fd)
 	return (SUCCESS);
 }
 
-int	check_sprites(void)
+static int	check_sprites(void)
 {
 	if (!g_game.texture.nord.path || !g_game.texture.south.path
 		|| !g_game.texture.west.path || !g_game.texture.east.path
@@ -90,32 +88,12 @@ int	check_sprites(void)
 
 int	get_map_options()
 {
-	int		fd;
-
-	fd = open(g_game.pathmap, O_RDONLY);
-	if (fd < 0)
+	g_game.fd = open(g_game.pathmap, O_RDONLY);
+	if (g_game.fd < 0)
 		return (exit_msg("Couldn't open map file."));
-	if (parse_options(NULL, fd) == ERROR)
-		return (exit_msg("Couldn't parse map."));
+	if (parse_options(NULL, g_game.fd, 0) == ERROR)
+		return (exit_msg("Incorrect options of map."));
 	if (check_sprites() == ERROR)
 		return (exit_msg("Incorrect sprite."));
-
-	printf("%d %d\n", g_game.window.width, g_game.window.height);
-	printf("%s\n", g_game.texture.nord.path);
-	printf("%s\n", g_game.texture.south.path);
-	printf("%s\n", g_game.texture.west.path);
-	printf("%s\n", g_game.texture.east.path);
-	printf("%s\n", g_game.texture.sprite.path);
-
-	printf("%d %d %d\n", g_game.texture.floor_color[0], g_game.texture.floor_color[1], g_game.texture.floor_color[2] );
-	printf("%d %d %d\n", g_game.texture.ceil_color[0], g_game.texture.ceil_color[1], g_game.texture.ceil_color[2] );
-	// 	|| check_sprites(game->options) == ERROR)
-	// {
-	// 	printf("Error.\nInvalid map options.\n");
-	// 	return (ERROR);
-	// }
-	// game->map = malloc_map(filename);
-	// // get_map(game, fd);
-	close(fd);
 	return (SUCCESS);
 }

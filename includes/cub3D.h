@@ -14,7 +14,6 @@
 #include <X11/X.h>
 #include <math.h>
 
-
 # define TRUE 1
 # define FALSE 0
 
@@ -45,22 +44,6 @@
 # define ESC 65307
 
 typedef char t_bool;
-
-typedef struct	s_map
-{
-	int		R_width;
-	int		R_height;
-
-	char	*nord;
-	char	*south;
-	char	*west;
-	char	*east;
-
-	char	*sprite;
-	int	*floor;
-	int	*ceil;
-
-}	t_map;
 
 typedef struct	s_color
 {
@@ -156,7 +139,6 @@ typedef struct	s_draw
 	int			floor_texture;
 	char		fog;
 	t_xpm		xpm;
-
 }				t_draw;
 
 typedef struct	s_life
@@ -169,21 +151,17 @@ typedef struct	s_life
 
 typedef struct s_game
 {
-	t_map *options;
-	char **map;
-
+	char		*pathmap;
+	int			fd;
+	char		*error;
+	char		**map;
 	double		posx;
 	double		posy;
 	char		orient;
-	int			fd;
-	char		*pathmap;
 	char		save;
-
-	char		*error;
-
+	char		*next;
 	char		iserrno;
 	char		*exec;
-	char		*next;
 	t_img		img;
 	t_window	window;
 	t_texture	texture;
@@ -203,21 +181,14 @@ void	free_img(t_xpm *xpm);
 void	next_map(void);
 void	free_2d(void **arg);
 //PARSING
-
-
 int		get_map_options();
-
 int		get_resolution(char *line, int i, char *temp);
 int		get_sprites(char *line, int i);
 int		get_colors_arr(char *line, int i, char chosen_char);
-
-int		get_map(t_game *game, int fd);
-char	**malloc_map(char *filename);
-
+int		get_map(void);
+int		malloc_map(void);
 int		open_textures_file(t_xpm *xpm);
 int		open_textures(void);
-// int	get_map_options(t_game *game, char *filename);
-// int	get_resolution(t_map *options, char *line, int i, char	*temp, int k);
 //HOOKS
 int		key_hook(int key);
 int		close_hook(int key);
@@ -253,7 +224,5 @@ t_draw	draw_get_perpdist(t_draw draw);
 t_img	draw_extern(t_draw draw, t_img img);
 //START_MLX
 void	set_start_orient(void);
-
-
 
 #endif

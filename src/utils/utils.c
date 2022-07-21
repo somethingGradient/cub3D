@@ -2,7 +2,7 @@
 
 size_t	ft_tablen(void **tab)
 {
-	size_t		i;
+	size_t	i;
 
 	i = 0;
 	while (tab[i] != 0)
