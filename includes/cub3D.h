@@ -186,7 +186,7 @@ int		get_resolution(char *line, int i, char *temp);
 int		get_sprites(char *line, int i);
 int		get_colors_arr(char *line, int i, char chosen_char);
 int		get_map(void);
-int		malloc_map(void);
+int		verifying_map(void);
 int		open_textures_file(t_xpm *xpm);
 int		open_textures(void);
 //HOOKS

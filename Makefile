@@ -19,6 +19,7 @@ SRC_LIST	=	main.c \
 				map_option/get_sprite_files.c \
 				map_option/get_colors_arr.c \
 				map_option/get_map.c \
+				map_option/verifying_map.c \
 				map_option/open_textures.c \
 				\
 				rendering/color.c \

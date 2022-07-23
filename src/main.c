@@ -35,20 +35,19 @@ static int	game_start()
 		return (ERROR);
 
 
+	// printf("%d %d\n", g_game.window.width, g_game.window.height);
+	// printf("%s\n", g_game.texture.nord.path);
+	// printf("%s\n", g_game.texture.south.path);
+	// printf("%s\n", g_game.texture.west.path);
+	// printf("%s\n", g_game.texture.east.path);
+	// printf("%s\n", g_game.texture.sprite.path);
 
-	printf("%d %d\n", g_game.window.width, g_game.window.height);
-	printf("%s\n", g_game.texture.nord.path);
-	printf("%s\n", g_game.texture.south.path);
-	printf("%s\n", g_game.texture.west.path);
-	printf("%s\n", g_game.texture.east.path);
-	printf("%s\n", g_game.texture.sprite.path);
+	// printf("%d %d %d\n", g_game.texture.floor_color[0], g_game.texture.floor_color[1], g_game.texture.floor_color[2] );
+	// printf("%d %d %d\n", g_game.texture.ceil_color[0], g_game.texture.ceil_color[1], g_game.texture.ceil_color[2] );
 
-	printf("%d %d %d\n", g_game.texture.floor_color[0], g_game.texture.floor_color[1], g_game.texture.floor_color[2] );
-	printf("%d %d %d\n", g_game.texture.ceil_color[0], g_game.texture.ceil_color[1], g_game.texture.ceil_color[2] );
-
-	int i = -1;
-	while (g_game.map[++i])
-		printf("%s", g_game.map[i]);
+	// int i = -1;
+	// while (g_game.map[++i])
+	// 	printf("%s", g_game.map[i]);
 
 	// game->mlx = mlx_init();
 	// open_sprites(game);

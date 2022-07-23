@@ -1,7 +1,7 @@
 
 #include "../../includes/cub3D.h"
 
-char	*find_first_wall(int fd, char *temp, int i, int *count_lines)
+static char	*find_first_wall(int fd, char *temp, int i, int *count_lines)
 {
 	char	*first_wall;
 
@@ -27,7 +27,7 @@ char	*find_first_wall(int fd, char *temp, int i, int *count_lines)
 	return (first_wall);
 }
 
-int	malloc_map(void)
+static int	malloc_map(void)
 {
 	int		fd_for_lines;
 	int		count_lines;
@@ -64,5 +64,7 @@ int	get_map(void)
 		line = get_next_line(g_game.fd);
 	}
 	close(g_game.fd);
+	if (verifying_map() == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
