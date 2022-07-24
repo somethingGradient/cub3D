@@ -17,6 +17,7 @@ int		open_map(void)
 	int		len;
 
 	len = ft_strlen(g_game.pathmap);
+	printf("|%s|\n", g_game.pathmap);
 	if ((g_game.fd = open(g_game.pathmap, O_RDWR)) == -1)
 	{
 		g_game.iserrno = 1;

@@ -92,14 +92,16 @@ int	main(int argc, char **argv)
 	// return (exit_msg("SUCCESS"));
 	updstate();
 	init_data();
-	// if (test_args(argc, argv) == 0)
-	// 	return (print_error());
+	if (test_args(argc, argv) == 0)
+		return (print_error());
 	updstate();
 	if (open_map() == 0)
 		return (print_error());
+	// printf("|lol|\n");
 	updstate();
 	if (parse_map() == 0)
 		return (print_error());
+	printf("|lol|\n");
 	updstate();
 	if (verif_map() == 0)
 		return (print_error());

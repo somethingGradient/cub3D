@@ -72,15 +72,22 @@ int		parse_map(void)
 
 	loop = 1;
 	line = NULL;
+	//printf("|lol|\n");
 	while (loop)
-		if ((loop = get_next_line(g_game.fd)) != -1)
+	{
+		line = get_next_line(g_game.fd);
+		printf("%s\n", line);
+		if (line == NULL)
 		{
-			if (gest_line(line) == 0 && parse_map_matrix(line) == 0)
-			{
-				free(line);
-				return (error_msg("parsemap"));
-			}
-			free(line);
+			printf("|break|\n");
+			break;
 		}
+		if (gest_line(line) == 0 && parse_map_matrix(line) == 0)
+		{
+			free(line);
+			return (error_msg("parsemap"));
+		}
+		free(line);
+	}
 	return (1);
 }
