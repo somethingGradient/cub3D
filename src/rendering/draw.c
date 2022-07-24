@@ -94,7 +94,7 @@ t_draw	get_drawpos(t_draw draw)
 	if (draw.draw_end >= draw.h)
 		draw.draw_end = draw.h - 1;
 	if (draw.side == 0 && draw.ray_dir_x < 0)
-		draw.xpm = g_game.texture.nord;
+		draw.xpm = g_game.texture.north;
 	else if (draw.side == 0)
 		draw.xpm = g_game.texture.south;
 	if (g_game.map[draw.map_x][draw.map_y] == '2')

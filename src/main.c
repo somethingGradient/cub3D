@@ -6,7 +6,7 @@ static void	init_game(void)
 {
 	g_game.window.height = -1;
 	g_game.window.width = -1;
-	g_game.texture.nord.path = NULL;
+	g_game.texture.north.path = NULL;
 	g_game.texture.south.path = NULL;
 	g_game.texture.west.path = NULL;
 	g_game.texture.east.path = NULL;
@@ -29,14 +29,14 @@ static void	init_game(void)
 static int	game_start()
 {
 	init_game();
-	if (get_map_options() == ERROR)
-		return (ERROR);
-	if (get_map() == ERROR)
-		return (ERROR);
+	// if (get_map_options() == ERROR)
+	// 	return (ERROR);
+	// if (get_map() == ERROR)
+	// 	return (ERROR);
 
 
 	// printf("%d %d\n", g_game.window.width, g_game.window.height);
-	// printf("%s\n", g_game.texture.nord.path);
+	// printf("%s\n", g_game.texture.north.path);
 	// printf("%s\n", g_game.texture.south.path);
 	// printf("%s\n", g_game.texture.west.path);
 	// printf("%s\n", g_game.texture.east.path);
@@ -78,16 +78,36 @@ static int	check_argv(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (check_argv(argc, argv) == SUCCESS)
-	{
-		if (game_start() == SUCCESS)
-		{
-			game_end();
-			return (exit_msg("SUCCESS"));
-		}
-	}
-	if (g_game.error != NULL)
-		printf("%s", g_game.error);
-	game_end();
-	return (exit_msg("SUCCESS"));
+	// if (check_argv(argc, argv) == SUCCESS)
+	// {
+	// 	if (game_start() == SUCCESS)
+	// 	{
+	// 		game_end();
+	// 		return (exit_msg("SUCCESS"));
+	// 	}
+	// }
+	// if (g_game.error != NULL)
+	// 	printf("%s", g_game.error);
+	// game_end();
+	// return (exit_msg("SUCCESS"));
+	updstate();
+	init_data();
+	// if (test_args(argc, argv) == 0)
+	// 	return (print_error());
+	updstate();
+	if (open_map() == 0)
+		return (print_error());
+	updstate();
+	if (parse_map() == 0)
+		return (print_error());
+	updstate();
+	if (verif_map() == 0)
+		return (print_error());
+	updstate();
+	display_info();
+	updstate();
+	if (start_mlx() == 0)
+		return (print_error());
+	updstate();
+	return (game_end());
 }

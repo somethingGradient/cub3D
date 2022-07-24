@@ -13,14 +13,18 @@ SRC_LIST	=	main.c \
 				utils/utils.c \
 				utils/game_end.c \
 				utils/next_map.c \
+				utils/print_error.c \
 				\
-				map_option/map_option.c \
-				map_option/get_resolution.c \
-				map_option/get_sprite_files.c \
-				map_option/get_colors_arr.c \
-				map_option/get_map.c \
-				map_option/verifying_map.c \
+				map_option/display_info.c \
+				map_option/error_msg.c \
+				map_option/init.c \
+				map_option/open_map.c \
 				map_option/open_textures.c \
+				map_option/parse_map_matrix.c \
+				map_option/parse_map_opts.c \
+				map_option/parse_map.c \
+				map_option/test_args.c \
+				map_option/verif_map.c \
 				\
 				rendering/color.c \
 				rendering/draw_extern.c \

@@ -9,3 +9,13 @@ size_t	ft_tablen(void **tab)
 		i++;
 	return (i);
 }
+
+int		ft_nbwords(char **line)
+{
+	int		i;
+
+	i = 0;
+	while (line[i] != 0)
+		i++;
+	return (i);
+}

@@ -13,6 +13,7 @@
 #include <fcntl.h>
 #include <X11/X.h>
 #include <math.h>
+#include <string.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -71,7 +72,7 @@ typedef struct	s_xpm
 
 typedef struct	s_texture
 {
-	t_xpm		nord;
+	t_xpm		north;
 	t_xpm		south;
 	t_xpm		west;
 	t_xpm		east;
@@ -180,15 +181,36 @@ int		game_end(void);
 void	free_img(t_xpm *xpm);
 void	next_map(void);
 void	free_2d(void **arg);
+int		print_error(void);
+int		ft_nbwords(char **line);
 //PARSING
-int		get_map_options();
-int		get_resolution(char *line, int i, char *temp);
-int		get_sprites(char *line, int i);
-int		get_colors_arr(char *line, int i, char chosen_char);
-int		get_map(void);
-int		verifying_map(void);
-int		open_textures_file(t_xpm *xpm);
+// int		get_map_options();
+// int		get_resolution(char *line, int i, char *temp);
+// int		get_sprites(char *line, int i);
+// int		get_colors_arr(char *line, int i, char chosen_char);
+// int		get_map(void);
+// int		verifying_map(void);
+// int		open_textures_file(t_xpm *xpm);
+// int		open_textures(void);
+void			display_info(void);
+int		error_msg(char *context);
+void	init_data(void);
+int		open_map(void);
 int		open_textures(void);
+int		open_textures_file(t_xpm *xpm);
+int		parse_map_matrix(char *line);
+int		parse_map_opts_l(char **opts, int nbopts);
+int		parse_map_opts_n(char **opts, int nbopts);
+int		parse_map_opts_t(char **opts, int nbopts, char texture);
+int		parse_map_opts_r(char **opts, int nbopts);
+int		parse_map(void);
+int		gest_line(char *line);
+int		parse_map_line(char **opts, int nbopts);
+int		test_args(int argc, char **argv);
+int		verif_map(void);
+int		verif_map_matrix(void);
+int		verif_map_diff(int i);
+
 //HOOKS
 int		key_hook(int key);
 int		close_hook(int key);
@@ -224,5 +246,6 @@ t_draw	draw_get_perpdist(t_draw draw);
 t_img	draw_extern(t_draw draw, t_img img);
 //START_MLX
 void	set_start_orient(void);
+int		start_mlx(void);
 
 #endif

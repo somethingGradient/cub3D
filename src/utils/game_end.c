@@ -31,7 +31,7 @@ int	game_end(void)
 	if (g_game.map != NULL)
 		free_2d((void**)g_game.map);
 	free_img(&(g_game.texture.south));
-	free_img(&(g_game.texture.nord));
+	free_img(&(g_game.texture.north));
 	free_img(&(g_game.texture.west));
 	free_img(&(g_game.texture.east));
 	free_img(&(g_game.texture.sprite));
