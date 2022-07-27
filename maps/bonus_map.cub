@@ -1,10 +1,10 @@
-NO ./images/NO.xpm
-SO ./images/SO.xpm
-WE ./images/WE.xpm
-EA ./images/EA.xpm
-S ./images/ITEM.xpm
-F ./images/NO.xpm
-C ./images/EA.xpm
+NO ./textures/NO.xpm
+SO ./textures/SO.xpm
+WE ./textures/WE.xpm
+EA ./textures/EA.xpm
+S ./textures/ITEM.xpm
+F ./textures/NO.xpm
+C ./textures/EA.xpm
 
         1111111111111111111111111
 		1000000000000000000000001

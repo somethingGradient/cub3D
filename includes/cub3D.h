@@ -22,8 +22,8 @@
 
 # define BUFFER_SIZE 42
 
-# define SCREEN_W 2560
-# define SCREEN_H 1440
+# define SCREEN_W 480
+# define SCREEN_H 320
 # define ROT 0.050
 # define MOV 0.1
 # define COL 2.5
@@ -224,5 +224,5 @@ t_draw	draw_get_perpdist(t_draw draw);
 t_img	draw_extern(t_draw draw, t_img img);
 //START_MLX
 void	set_start_orient(void);
-
+int		start_mlx(void);
 #endif

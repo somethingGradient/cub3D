@@ -14,17 +14,15 @@ static int	distribute_char(char *line, int i)
 			return (ERROR);
 	}
 	else if (line[i] == 'N' || line[i] == 'S'
-		|| line[i] == 'W' || line[i] == 'E'
-		|| line[i] == 'F' || line[i] == 'C')
+		|| line[i] == 'W' || line[i] == 'E')
 	{
 		if (get_sprites(line, i) == ERROR)
 			return (ERROR);
 	}
 	else if (line[i] == '1')
-		return (2);	
+		return (2);
 	else
 		return (ERROR);
-
 	return (SUCCESS);
 }
 
@@ -64,11 +62,11 @@ static int	parse_options(char *line, int fd, int status)
 				free(line);
 				return (SUCCESS);
 			}
-		}
-		if (ft_strlen(line) < 2 || status == ERROR)
-		{
-			free(line);
-			return (ERROR);
+			else if (status == ERROR)
+			{
+				free(line);
+				return (ERROR);
+			}
 		}
 		free(line);
 		line = NULL;
@@ -80,9 +78,13 @@ static int	parse_options(char *line, int fd, int status)
 static int	check_sprites(void)
 {
 	if (!g_game.texture.nord.path || !g_game.texture.south.path
-		|| !g_game.texture.west.path || !g_game.texture.east.path
-		|| !g_game.texture.sprite.path)
+		|| !g_game.texture.west.path || !g_game.texture.east.path)
 		return (ERROR);
+	if (g_game.window.width == -1 || g_game.window.height == -1)
+	{
+		g_game.window.width = SCREEN_W;
+		g_game.window.height = SCREEN_H;
+	}
 	return (SUCCESS);
 }
 

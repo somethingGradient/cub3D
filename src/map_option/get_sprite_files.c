@@ -15,7 +15,7 @@ int put_vector(char **vector, char *line, int i)
 				return (ERROR);
 		}
 		if (access((*vector), 0) == -1
-			|| access((*vector), 3) == -1) 
+			|| access((*vector), 3) == -1)
 			return (ERROR);
 	}
 	else
@@ -49,6 +49,5 @@ int	get_sprites(char *line, int i)
 			|| get_element_by_sprites(&(g_game.texture.sprite.path), line, i, 'S', ' ') == ERROR)
 			return (ERROR);
 	}
-
 	return (SUCCESS);
 }

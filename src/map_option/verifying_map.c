@@ -81,12 +81,12 @@ static int	check_closing_row(int i, char *line, int k, int arr_len)
 	{
 		if (line[k] == ' ')
 		{
-			if (line[k + 1])
+			if (line[k + 1] && ((k + 1) < ft_strlen(line)))
 			{
 				if (line[k + 1] != '1' && line[k + 1] != ' ' && line[k + 1] != '\n')
 					return (ERROR);
 			}
-			if (line[k - 1])
+			if (line[k - 1] && k != 0)
 			{
 				if (line[k - 1] != '1' && line[k - 1] != ' ' && line[k - 1] != '\n')
 					return (ERROR);

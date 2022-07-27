@@ -1,8 +1,8 @@
-NO ./images/NO.xpm
-SO ./images/SO.xpm
-WE ./images/WE.xpm
-EA ./images/EA.xpm
-F 1100,153,15
+NO ./textures/NO.xpm
+SO ./textures/SO.xpm
+WE ./textures/WE.xpm
+EA ./textures/EA.xpm
+F 100,153,15
 C 255,255,255
 
         1111111111111111111111111

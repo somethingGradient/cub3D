@@ -48,13 +48,8 @@ static int	game_start()
 	// int i = -1;
 	// while (g_game.map[++i])
 	// 	printf("%s", g_game.map[i]);
+	// start_mlx();
 
-	// game->mlx = mlx_init();
-	// open_sprites(game);
-	// ft_new_window(game);
-	// mlx_key_hook(game->window.reference, keys_hook, game);
-	// mlx_loop_hook(game->mlx, animations, game);
-	// mlx_loop(game->mlx);
 	return (exit_msg("SUCCESS"));
 }
 

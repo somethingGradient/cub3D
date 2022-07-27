@@ -1,7 +1,7 @@
-NO ./images/NO.xpm
-wE ./images/WE.xpm
-SO ./images/SO.xpm
-EA ./images/EA.xpm
+NO ./textures/NO.xpm
+wE ./textures/WE.xpm
+SO ./textures/SO.xpm
+EA ./textures/EA.xpm
 F 00,153,15
 C 255,255,255
 
