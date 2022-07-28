@@ -97,9 +97,15 @@ static int	check_closing_row(int i, char *line, int k, int arr_len)
 	return (SUCCESS);
 }
 
+int		get_pos(int n)
+{
+	static int	i = 0;
 
+	i += n;
+	return (i);
+}
 
-static int	check_allowing_chars(char *line, int k)
+static int	check_allowing_chars(char *line, int i, int k)
 {
 	while (line[++k])
 	{
@@ -118,8 +124,14 @@ static int	check_allowing_chars(char *line, int k)
 		else if (line[k] == 'N' || line[k] == 'S'
 				|| line[k] == 'W' || line[k] == 'E')
 		{
-			// position init
-			continue ;
+			if (g_game.posx == -1 && g_game.posy == -1)
+			{
+				g_game.posx = get_pos(0) + 0.5;
+				g_game.posy = i + 0.5;
+				continue ;
+			}
+			else
+				return (ERROR);
 		}
 		else
 			return (ERROR);
@@ -142,7 +154,7 @@ int	verifying_map(void)
 			return (exit_msg("Map not closed. COL."));
 		if (check_closing_row(i, g_game.map[i], -1, arr_len) == ERROR)
 			return (exit_msg("Map not closed. ROW."));
-		if (check_allowing_chars(g_game.map[i], -1) == ERROR)
+		if (check_allowing_chars(g_game.map[i], i, -1) == ERROR)
 			return (exit_msg("The map includes unexpected symbols."));
 	}
 	return (SUCCESS);
