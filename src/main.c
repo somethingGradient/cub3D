@@ -11,10 +11,6 @@ static void	init_game(void)
 	g_game.texture.west.path = NULL;
 	g_game.texture.east.path = NULL;
 	g_game.texture.sprite.path = NULL;
-	g_game.texture.floor_color = NULL;
-	g_game.texture.ceil_color = NULL;
-	g_game.texture.floor.path = NULL;
-	g_game.texture.ceiling.path = NULL;
 	g_game.next = NULL;
 	g_game.map = NULL;
 	g_game.error = NULL;
@@ -34,7 +30,6 @@ static int	game_start()
 	if (get_map() == ERROR)
 		return (ERROR);
 
-
 	// printf("%d %d\n", g_game.window.width, g_game.window.height);
 	// printf("%s\n", g_game.texture.nord.path);
 	// printf("%s\n", g_game.texture.south.path);
@@ -42,15 +37,16 @@ static int	game_start()
 	// printf("%s\n", g_game.texture.east.path);
 	// printf("%s\n", g_game.texture.sprite.path);
 
-	// printf("%d %d %d\n", g_game.texture.floor_color[0], g_game.texture.floor_color[1], g_game.texture.floor_color[2] );
-	// printf("%d %d %d\n", g_game.texture.ceil_color[0], g_game.texture.ceil_color[1], g_game.texture.ceil_color[2] );
+	// printf("%d %d %d\n", g_game.texture.floor.r, g_game.texture.floor.g, g_game.texture.floor.b );
+	// printf("%d %d %d\n", g_game.texture.ceil.r, g_game.texture.ceil.g, g_game.texture.ceil.b );
 
 	// int i = -1;
 	// while (g_game.map[++i])
 	// 	printf("%s", g_game.map[i]);
-	// start_mlx();
 
-	return (exit_msg("SUCCESS"));
+	start_mlx();
+
+	return (SUCCESS);
 }
 
 static int	check_argv(int argc, char **argv)
@@ -77,12 +73,12 @@ int	main(int argc, char **argv)
 	{
 		if (game_start() == SUCCESS)
 		{
-			game_end();
+			// game_end();
 			return (exit_msg("SUCCESS"));
 		}
 	}
 	if (g_game.error != NULL)
 		printf("%s", g_game.error);
-	game_end();
+	// game_end();
 	return (exit_msg("SUCCESS"));
 }

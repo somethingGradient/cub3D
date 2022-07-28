@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_get_dist.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybayart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/30 17:53:20 by ybayart           #+#    #+#             */
+/*   Updated: 2019/11/30 17:53:26 by ybayart          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3D.h"
 
 int		draw_get_dist(t_draw draw)
@@ -17,7 +29,6 @@ t_draw	draw_get_perpdist(t_draw draw)
 
 	df = (double)((draw.w / 2) - abs(draw.x - (draw.w / 2))) / (draw.w / 2);
 	draw.fog = 0;
-	draw.init_wall_dist = draw.perp_wall_dist;
 	if (draw.perp_wall_dist > FOG + df)
 	{
 		draw.perp_wall_dist = FOG + df;

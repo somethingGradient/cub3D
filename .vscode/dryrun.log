@@ -1,0 +1,12 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/akitty/cub3D'
+clang -c src/rendering/start_mlx.c -o src/rendering/start_mlx.o
+#@/Applications/Xcode.app/Contents/Developer/usr/bin/make all -C ./libft/
+ 
+#@/Applications/Xcode.app/Contents/Developer/usr/bin/make all -C ./mlx_mac/
+ 
+clang -Wall -Wextra -Werror src/main.o src/utils/get_next_line_bonus.o src/utils/updstate.o src/utils/exit_msg.o src/utils/utils.o src/utils/game_end.o src/utils/next_map.o src/map_option/get_colors.o src/map_option/get_map.o src/map_option/get_resolution.o src/map_option/get_sprite_files.o src/map_option/map_option.o src/map_option/open_textures.o src/map_option/verifying_map.o src/rendering/color.o src/rendering/draw_get_dist.o src/rendering/draw.o src/rendering/hook_move.o src/rendering/hook_vision.o src/rendering/hooks.o src/rendering/hud_cross.o src/rendering/hud_life.o src/rendering/hud_minimap.o src/rendering/img.o src/rendering/start_mlx.o ./libft/libft.a ./mlx_mac/libmlx.a -framework OpenGL -framework AppKit -o cub3D
+echo "\033[36;1m"Compiled!"\033[0m"
+ 
+make: Leaving directory `/Users/akitty/cub3D'
+ 

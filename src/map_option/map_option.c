@@ -6,18 +6,18 @@ static int	distribute_char(char *line, int i)
 	if (line[i] == 'R')
 	{
 		if (get_resolution(line, i, NULL) == ERROR)
-			return (ERROR);
+			return (exit_msg("Window resolution is incorrect."));
 	}
 	else if (line[i] == 'F' || line[i] == 'C')
 	{
-		if (get_colors_arr(line, i, line[i]) == ERROR)
-			return (ERROR);
+		if (get_color(line, i, line[i]) == ERROR)
+			return (exit_msg("Colors RGB are incorrect."));
 	}
 	else if (line[i] == 'N' || line[i] == 'S'
 		|| line[i] == 'W' || line[i] == 'E')
 	{
 		if (get_sprites(line, i) == ERROR)
-			return (ERROR);
+			return (exit_msg("Sprite files opening error."));
 	}
 	else if (line[i] == '1')
 		return (2);
@@ -94,8 +94,8 @@ int	get_map_options()
 	if (g_game.fd < 0)
 		return (exit_msg("Couldn't open map file."));
 	if (parse_options(NULL, g_game.fd, 0) == ERROR)
-		return (exit_msg("Incorrect options of map."));
+		return (ERROR);
 	if (check_sprites() == ERROR)
-		return (exit_msg("Incorrect sprite."));
+		return (exit_msg("Not enough parameters to start."));
 	return (SUCCESS);
 }

@@ -35,15 +35,9 @@ int	game_end(void)
 	free_img(&(g_game.texture.west));
 	free_img(&(g_game.texture.east));
 	free_img(&(g_game.texture.sprite));
-	free_img(&(g_game.texture.floor));
-	free_img(&(g_game.texture.ceiling));
-	if (g_game.texture.ceil_color != NULL)
-		free(g_game.texture.ceil_color);
-	if (g_game.texture.floor_color != NULL)
-		free(g_game.texture.floor_color);
 	// mlx_destroy_image(g_game.window.mlx, g_game.img.ptr);
 	// free(g_game.window.win);
 	// free(g_game.window.mlx);
-	//ft_printf("End at state %d\n", updstate());
+	//printf("End at state %d\n", updstate());
 	exit(EXIT_SUCCESS);
 }

@@ -76,10 +76,8 @@ typedef struct	s_texture
 	t_xpm		west;
 	t_xpm		east;
 	t_xpm		sprite;
-	t_xpm		floor;
-	t_xpm		ceiling;
-	int			*floor_color;
-	int			*ceil_color;
+	t_color		floor;
+	t_color		ceil;
 }				t_texture;
 
 typedef struct	s_window
@@ -111,7 +109,6 @@ typedef struct	s_draw
 	double		delta_dist_x;
 	double		delta_dist_y;
 	double		perp_wall_dist;
-	double		init_wall_dist;
 	int			step_x;
 	int			step_y;
 	int			hit;
@@ -125,18 +122,19 @@ typedef struct	s_draw
 	double		wall_x;
 	int			tex_x;
 	int			tex_y;
-	double		floor_x_w;
-	double		floor_y_w;
-	double		dist_w;
+	double		floor_x_wall;
+	double		floor_y_wall;
+	double		dist_wall;
 	double		dist_player;
 	double		dist_current;
 	double		weight;
-	double		floor_x;
-	double		floor_y;
-	int			ftex_x;
-	int			ftex_y;
+	double		current_floor_x;
+	double		current_floor_y;
+	int			floor_tex_x;
+	int			floor_tex_y;
 	int			checker_board_pattern;
 	int			floor_texture;
+	double		vertical;
 	char		fog;
 	t_xpm		xpm;
 }				t_draw;
@@ -184,7 +182,7 @@ void	free_2d(void **arg);
 int		get_map_options();
 int		get_resolution(char *line, int i, char *temp);
 int		get_sprites(char *line, int i);
-int		get_colors_arr(char *line, int i, char chosen_char);
+int		get_color(char *line, int i, char chosen_char);
 int		get_map(void);
 int		verifying_map(void);
 int		open_textures_file(t_xpm *xpm);
@@ -194,12 +192,14 @@ int		key_hook(int key);
 int		close_hook(int key);
 void	hook_move(int key);
 void	hook_translate(int key);
+void	hook_vertical(int key);
 void	hook_action(void);
 void	hook_rotate(int key, double initrot);
 //COLOR
 t_color	create_rgbcolor(char c);
 t_color	create_tcolor(int color);
 //IMG
+t_img	create_background(t_img img);
 t_img	create_img(void);
 t_img	create_hud(t_img img, t_draw draw);
 t_color	img_get_px(t_img img, int x, int y);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   img.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybayart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/27 02:05:29 by ybayart           #+#    #+#             */
+/*   Updated: 2019/11/27 02:05:31 by ybayart          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3D.h"
 
 void	img_set_px(t_color color, t_img img, int x, int y)
@@ -18,6 +30,26 @@ t_color	img_get_px(t_img img, int x, int y)
 	color.g = (unsigned)*(img.data + (x * 4 + 1) + (img.size * y));
 	color.b = (unsigned)*(img.data + (x * 4 + 0) + (img.size * y));
 	return (color);
+}
+
+t_img	create_background(t_img img)
+{
+	t_window	win;
+	int			x;
+	int			y;
+
+	win = g_game.window;
+	x = -1;
+	while (++x < win.width)
+	{
+		y = -1;
+		while (++y < win.height)
+			if (y < win.height / 2 + g_game.draw.vertical)
+				img_set_px(g_game.texture.ceil, img, x, y);
+			else
+				img_set_px(g_game.texture.floor, img, x, y);
+	}
+	return (img);
 }
 
 t_img	create_hud(t_img img, t_draw draw)

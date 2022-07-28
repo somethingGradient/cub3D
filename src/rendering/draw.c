@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybayart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/27 02:07:26 by ybayart           #+#    #+#             */
+/*   Updated: 2019/11/27 02:07:42 by ybayart          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3D.h"
 
 t_draw	init_draw(t_draw draw, int state)
@@ -13,6 +25,7 @@ t_draw	init_draw(t_draw draw, int state)
 		draw.x = -1;
 		draw.w = g_game.window.width;
 		draw.h = g_game.window.height;
+		draw.vertical = 0;
 	}
 	else if (state == 1)
 	{
@@ -76,10 +89,10 @@ t_draw	get_dist(t_draw draw)
 	}
 	if (draw.side == 0)
 		draw.perp_wall_dist = (draw.map_x - draw.pos_x + (1 - draw.step_x) / 2)
-		/ draw.ray_dir_x;
+		/ draw.ray_dir_x + fabs(draw.vertical / (g_game.window.height * 2.22));
 	else
 		draw.perp_wall_dist = (draw.map_y - draw.pos_y + (1 - draw.step_y) / 2)
-		/ draw.ray_dir_y;
+		/ draw.ray_dir_y + fabs(draw.vertical / (g_game.window.height * 2.22));
 	draw = draw_get_perpdist(draw);
 	draw.line_height = (int)(draw.h / (draw.perp_wall_dist));
 	return (draw);
@@ -87,10 +100,10 @@ t_draw	get_dist(t_draw draw)
 
 t_draw	get_drawpos(t_draw draw)
 {
-	draw.draw_start = (-draw.line_height / 2 + draw.h / 2);
+	draw.draw_start = (-draw.line_height / 2 + draw.h / 2) + draw.vertical;
 	if (draw.draw_start < 0)
 		draw.draw_start = 0;
-	draw.draw_end = (draw.line_height / 2 + draw.h / 2);
+	draw.draw_end = (draw.line_height / 2 + draw.h / 2) + draw.vertical;
 	if (draw.draw_end >= draw.h)
 		draw.draw_end = draw.h - 1;
 	if (draw.side == 0 && draw.ray_dir_x < 0)
@@ -100,9 +113,11 @@ t_draw	get_drawpos(t_draw draw)
 	if (g_game.map[draw.map_x][draw.map_y] == '2')
 		draw.xpm = g_game.texture.sprite;
 	if (draw.side == 0)
-		draw.wall_x = draw.pos_y + draw.perp_wall_dist * draw.ray_dir_y;
+		draw.wall_x = draw.pos_y + (draw.perp_wall_dist - fabs(draw.vertical /
+			(g_game.window.height * 2.22))) * draw.ray_dir_y;
 	else
-		draw.wall_x = draw.pos_x + draw.perp_wall_dist * draw.ray_dir_x;
+		draw.wall_x = draw.pos_x + (draw.perp_wall_dist - fabs(draw.vertical /
+			(g_game.window.height * 2.22))) * draw.ray_dir_x;
 	draw.wall_x -= floor(draw.wall_x);
 	draw.tex_x = (int)(draw.wall_x * (double)draw.xpm.width);
 	if (draw.side == 0 && draw.ray_dir_x > 0)
@@ -118,22 +133,24 @@ void	draw(void)
 	t_img	img;
 
 	draw = g_game.draw;
-	img = g_game.img;
+	img = create_background(g_game.img);
 	while (++draw.x < draw.w)
 	{
 		draw = init_draw(draw, 1);
 		draw = get_orient(draw);
 		draw = get_dist(draw);
 		draw = get_drawpos(draw);
-		img = draw_extern(draw, img);
 		while (draw.draw_start < draw.draw_end)
 			img_set_px(draw.fog == 0 ? img_get_px(draw.xpm.img, draw.tex_x,
-			(((draw.draw_start * 256 - draw.h * 128 +
+			((((draw.draw_start - draw.vertical) * 256 - draw.h * 128 +
 			draw.line_height * 128) * draw.xpm.height) / draw.line_height) /
 			256) : create_rgbcolor('n'), img, draw.x, draw.draw_start++);
 	}
 	img = create_hud(img, draw);
-	mlx_put_image_to_window(
-		g_game.window.mlx, g_game.window.win, img.ptr, 0, 0);
+	// if (g_game.save == 1)
+	// 	export_as_bmp("save.bmp", img.data, draw.w, draw.h);
+	// else
+		mlx_put_image_to_window(
+			g_game.window.mlx, g_game.window.win, img.ptr, 0, 0);
 	g_game.img = img;
 }

@@ -34,6 +34,7 @@ BONUS_OBJ	= ${BONUS_SRCS:.c=.o}
 
 $(NAME):	${OBJ}
 				@ar rcs $(NAME) ${OBJ}
+				ranlib $(NAME)
 
 %.o : 		%.c
 				gcc $(FLAGS) -c $< -o ${<:.c=.o}

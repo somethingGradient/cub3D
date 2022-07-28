@@ -14,26 +14,26 @@ SRC_LIST	=	main.c \
 				utils/game_end.c \
 				utils/next_map.c \
 				\
-				map_option/map_option.c \
+				map_option/get_colors.c \
+				map_option/get_map.c \
 				map_option/get_resolution.c \
 				map_option/get_sprite_files.c \
-				map_option/get_colors_arr.c \
-				map_option/get_map.c \
-				map_option/verifying_map.c \
+				map_option/map_option.c \
 				map_option/open_textures.c \
+				map_option/verifying_map.c \
 				\
 				rendering/color.c \
-				rendering/draw_extern.c \
 				rendering/draw_get_dist.c \
 				rendering/draw.c \
-				rendering/hook.c \
-				rendering/hook_rotate.c \
 				rendering/hook_move.c \
+				rendering/hook_vision.c \
+				rendering/hooks.c \
 				rendering/hud_cross.c \
 				rendering/hud_life.c \
 				rendering/hud_minimap.c \
 				rendering/img.c \
-				rendering/start_mlx.c 
+				rendering/start_mlx.c \
+				
 
 SRC			= $(addprefix src/, $(SRC_LIST))
 

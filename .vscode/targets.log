@@ -1,0 +1,846 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Thu Jul 28 15:11:21 2022
+
+# Variables
+
+# automatic
+ 
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 40)
+OBJ = $(SRC:%.c=%.o)
+# makefile (from `Makefile', line 38)
+SRC = $(addprefix src/, $(SRC_LIST))
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/akitty/cub3D
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from `Makefile', line 44)
+MLX = libmlx.a
+# environment
+_ = /usr/bin/make
+# environment
+MAVEN_HOME = /opt/JavaTools/Maven
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vqy400yxzj/T/vscode-ipc-e2607947-5799-4901-b746-b4c23365846a.sock
+# environment
+VSCODE_CWD = /
+# environment
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+# environment
+C_INCLUDE_PATH = /usr/local/include/
+# environment
+LIBRARY_PATH = /usr/local/Cellar/check/0.15.2/lib:/usr/local/lib
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.7ixeMpj4GQ/Listeners
+# environment
+CPLUS_INCLUDE_PATH = /usr/local/include/
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/akitty/cub3D
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/akitty
+# makefile (from `Makefile', line 45)
+MAC_FLAGS = -framework OpenGL -framework AppKit
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/akitty/Library/Application Support/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+# environment
+LOGNAME = akitty
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# makefile (from `Makefile', line 46)
+LINUX_FLAGS = -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 42)
+LIBFT = ./libft/libft.a
+# makefile (from `Makefile', line 3)
+CC = clang
+# makefile (from `Makefile', line 48)
+UNAME := Darwin
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = akitty
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 1)
+NAME = cub3D
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n003vqy400yxzj/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/akitty/Library/Application Support/Code/1.67.1-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.1605391.1605595
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0xF77F1:0x7:0x31
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# makefile (from `Makefile', line 7)
+HEADER = ./includes/cub3D.h
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# makefile (from `Makefile', line 5)
+ 
+FLAGS = -Wall -Wextra -Werror
+# makefile (from `Makefile', line 9)
+SRC_LIST = main.c utils/get_next_line_bonus.c utils/updstate.c utils/exit_msg.c utils/utils.c utils/game_end.c utils/next_map.c map_option/get_colors.c map_option/get_map.c map_option/get_resolution.c map_option/get_sprite_files.c map_option/map_option.c map_option/open_textures.c map_option/verifying_map.c rendering/color.c rendering/draw_get_dist.c rendering/draw.c rendering/hook_move.c rendering/hook_vision.c rendering/hooks.c rendering/hud_cross.c rendering/hud_life.c rendering/hud_minimap.c rendering/img.c rendering/start_mlx.c 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 10614
+# variable set hash-table stats:
+# Load=78/1024=8%, Rehash=0, Collisions=7/115=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777230, inode 138057): 14 files, no impossibilities.
+# src/utils (device 16777230, inode 138358): 13 files, no impossibilities so far.
+# src/map_option (device 16777230, inode 138337): 15 files, no impossibilities so far.
+# src/rendering (device 16777230, inode 162704): 23 files, no impossibilities so far.
+# src (device 16777230, inode 138335): 4 files, no impossibilities so far.
+
+# 69 files, no impossibilities in 5 directories.
+
+# Implicit Rules
+
+%.o: %.c
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+src/rendering/draw.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 15:09:25
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+includes/cub3D.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/utils/utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 14:21:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/rendering/start_mlx.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:46:50
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/map_option/verifying_map.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 13:31:09
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: cub3D
+ 
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+
+# Not a target:
+src/utils/game_end.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:41:15
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/rendering/hud_life.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 15:10:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/rendering/hooks.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 15:10:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/map_option/map_option.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:59:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+.PHONY: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+src/main.o: src/main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/main'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/map_option/get_map.o: src/map_option/get_map.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/map_option/get_map'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/rendering/hud_minimap.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:44:50
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/utils/exit_msg.o: src/utils/exit_msg.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/utils/exit_msg'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+cub3D: src/main.o src/utils/get_next_line_bonus.o src/utils/updstate.o src/utils/exit_msg.o src/utils/utils.o src/utils/game_end.o src/utils/next_map.o src/map_option/get_colors.o src/map_option/get_map.o src/map_option/get_resolution.o src/map_option/get_sprite_files.o src/map_option/map_option.o src/map_option/open_textures.o src/map_option/verifying_map.o src/rendering/color.o src/rendering/draw_get_dist.o src/rendering/draw.o src/rendering/hook_move.o src/rendering/hook_vision.o src/rendering/hooks.o src/rendering/hud_cross.o src/rendering/hud_life.o src/rendering/hud_minimap.o src/rendering/img.o src/rendering/start_mlx.o includes/cub3D.h
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  commands to execute (from `Makefile', line 53):
+	@#@$(MAKE) all -C $(dir $(LIBFT))
+	@#@$(MAKE) all -C ./mlx_mac/
+	@$(CC) $(FLAGS) $(OBJ) $(LIBFT) ./mlx_mac/$(MLX) $(MAC_FLAGS) -o $(NAME)
+	@echo "\033[36;1m"Compiled!"\033[0m"
+	
+
+src/rendering/hook_vision.o: src/rendering/hook_vision.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/hook_vision'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/map_option/get_resolution.o: src/map_option/get_resolution.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/map_option/get_resolution'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/utils/updstate.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 14:21:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/map_option/open_textures.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 15:05:32
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/rendering/hud_cross.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:44:50
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 15:10:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/map_option/get_sprite_files.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 16:13:33
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/rendering/img.o: src/rendering/img.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/img'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/utils/get_next_line_bonus.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 16:09:20
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/map_option/get_colors.o: src/map_option/get_colors.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/map_option/get_colors'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/rendering/draw_get_dist.o: src/rendering/draw_get_dist.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/draw_get_dist'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/utils/next_map.o: src/utils/next_map.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/utils/next_map'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 74):
+	@#@$(MAKE) fclean -C $(dir $(LIBFT))
+	@#@$(MAKE) clean -C ./mlx_mac/
+	@rm -rf $(NAME)
+	@echo "\033[1;34m"Full cleaned!"\033[0m"
+	
+
+# Not a target:
+src/rendering/hook_move.c:
+ 
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:44:50
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 15:05:46
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/utils/exit_msg.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 14:21:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/rendering/hook_vision.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:44:50
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/rendering/hook_move.o: src/rendering/hook_move.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/hook_move'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/map_option/get_resolution.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 14:21:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+src/rendering/draw.o: src/rendering/draw.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/draw'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 69):
+	@#@$(MAKE) clean -C $(dir $(LIBFT))
+	@rm -rf $(OBJ)
+	@echo "\033[1;35m"Cleaned!"\033[0m"
+	
+
+# Not a target:
+src/map_option/get_colors.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:59:36
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/utils/utils.o: src/utils/utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/utils/utils'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/rendering/start_mlx.o: src/rendering/start_mlx.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/start_mlx'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := src/rendering/start_mlx.o
+# automatic
+# % := 
+# automatic
+# * := src/rendering/start_mlx
+# automatic
+# + := src/rendering/start_mlx.c
+# automatic
+# | := 
+# automatic
+# < := src/rendering/start_mlx.c
+# automatic
+# ^ := src/rendering/start_mlx.c
+# automatic
+# ? := src/rendering/start_mlx.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/rendering/color.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:43:42
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/map_option/verifying_map.o: src/map_option/verifying_map.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/map_option/verifying_map'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/utils/game_end.o: src/utils/game_end.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/utils/game_end'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/rendering/hud_life.o: src/rendering/hud_life.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/hud_life'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+ 
+	@$(CC) -c $< -o $@
+	
+
+src/rendering/hooks.o: src/rendering/hooks.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/hooks'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/rendering/draw_get_dist.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:44:50
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/map_option/map_option.o: src/map_option/map_option.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/map_option/map_option'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/rendering/color.o: src/rendering/color.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/color'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/utils/next_map.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 14:21:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/rendering/hud_minimap.o: src/rendering/hud_minimap.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/hud_minimap'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/utils/updstate.o: src/utils/updstate.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/utils/updstate'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/map_option/open_textures.o: src/map_option/open_textures.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/map_option/open_textures'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+src/rendering/hud_cross.o: src/rendering/hud_cross.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/rendering/hud_cross'
+#  Last modified 2022-07-28 15:11:02
+#  File has been updated.
+ 
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/map_option/get_map.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 14:21:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/map_option/get_sprite_files.o: src/map_option/get_sprite_files.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/map_option/get_sprite_files'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# Not a target:
+src/rendering/img.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 14:45:41
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/utils/get_next_line_bonus.o: src/utils/get_next_line_bonus.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/utils/get_next_line_bonus'
+#  Last modified 2022-07-28 15:11:01
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 66):
+	@$(CC) -c $< -o $@
+	
+
+# files hash-table stats:
+# Load=60/1024=6%, Rehash=0, Collisions=17/182=9%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Thu Jul 28 15:11:21 2022
+
+ 

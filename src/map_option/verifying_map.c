@@ -97,16 +97,30 @@ static int	check_closing_row(int i, char *line, int k, int arr_len)
 	return (SUCCESS);
 }
 
+
+
 static int	check_allowing_chars(char *line, int k)
 {
 	while (line[++k])
 	{
 		if (line[k] == ' ' || line[k] == '\n'
-			|| line[k] == 'N' || line[k] == 'S'
-			|| line[k] == 'W' || line[k] == 'E'
-			|| line[k] == '0' || line[k] == '1'
-			|| line[k] == '2')
+			|| line[k] == '0' || line[k] == '1')
 			continue ;
+		else if (line[k] == '2')
+		{
+			if (g_game.texture.sprite.path == NULL)
+			{
+				printf("Sprite's params isn't correct.");
+				return (ERROR);
+			}
+			continue ;
+		}
+		else if (line[k] == 'N' || line[k] == 'S'
+				|| line[k] == 'W' || line[k] == 'E')
+		{
+			// position init
+			continue ;
+		}
 		else
 			return (ERROR);
 	}
