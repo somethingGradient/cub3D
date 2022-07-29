@@ -42,15 +42,15 @@ int		start_mlx(void)
 	// updstate();
 	g_game.img = create_img();
 	g_game.orient = g_game.map[(int)g_game.posx][(int)g_game.posy];
-	// g_game.draw = init_draw(g_game.draw, 0);
-	// set_start_orient();
+	g_game.draw = init_draw(g_game.draw, 0);
+	set_start_orient();
 	// if (g_game.save == 1)
 	// 	printf("Saving image...\n");
-	// draw();
+	draw();
 	// // if (g_game.save == 0)
 	// // {
-	// 	mlx_hook(g_game.window.win, 2, 1L << 0, key_hook, g_game.window.mlx);
-	// 	mlx_hook(g_game.window.win, 17, 1L << 0, close_hook, g_game.window.mlx);
+		mlx_hook(g_game.window.win, 2, 1L << 0, key_hook, g_game.window.mlx);
+		mlx_hook(g_game.window.win, 17, 1L << 0, close_hook, g_game.window.mlx);
 		mlx_loop(g_game.window.mlx);
 	// }
 	// else

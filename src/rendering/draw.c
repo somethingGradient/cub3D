@@ -110,20 +110,20 @@ t_draw	get_drawpos(t_draw draw)
 		draw.xpm = g_game.texture.nord;
 	else if (draw.side == 0)
 		draw.xpm = g_game.texture.south;
-	if (g_game.map[draw.map_x][draw.map_y] == '2')
-		draw.xpm = g_game.texture.sprite;
-	if (draw.side == 0)
-		draw.wall_x = draw.pos_y + (draw.perp_wall_dist - fabs(draw.vertical /
-			(g_game.window.height * 2.22))) * draw.ray_dir_y;
-	else
-		draw.wall_x = draw.pos_x + (draw.perp_wall_dist - fabs(draw.vertical /
-			(g_game.window.height * 2.22))) * draw.ray_dir_x;
-	draw.wall_x -= floor(draw.wall_x);
-	draw.tex_x = (int)(draw.wall_x * (double)draw.xpm.width);
-	if (draw.side == 0 && draw.ray_dir_x > 0)
-		draw.tex_x = draw.xpm.width - draw.tex_x - 1;
-	if (draw.side == 1 && draw.ray_dir_y < 0)
-		draw.tex_x = draw.xpm.width - draw.tex_x - 1;
+	// if (g_game.map[draw.map_x][draw.map_y] == '2')
+	// 	draw.xpm = g_game.texture.sprite;
+	// if (draw.side == 0)
+	// 	draw.wall_x = draw.pos_y + (draw.perp_wall_dist - fabs(draw.vertical /
+	// 		(g_game.window.height * 2.22))) * draw.ray_dir_y;
+	// else
+	// 	draw.wall_x = draw.pos_x + (draw.perp_wall_dist - fabs(draw.vertical /
+	// 		(g_game.window.height * 2.22))) * draw.ray_dir_x;
+	// draw.wall_x -= floor(draw.wall_x);
+	// draw.tex_x = (int)(draw.wall_x * (double)draw.xpm.width);
+	// if (draw.side == 0 && draw.ray_dir_x > 0)
+	// 	draw.tex_x = draw.xpm.width - draw.tex_x - 1;
+	// if (draw.side == 1 && draw.ray_dir_y < 0)
+	// 	draw.tex_x = draw.xpm.width - draw.tex_x - 1;
 	return (draw);
 }
 
@@ -140,13 +140,13 @@ void	draw(void)
 		draw = get_orient(draw);
 		draw = get_dist(draw);
 		draw = get_drawpos(draw);
-		while (draw.draw_start < draw.draw_end)
-			img_set_px(draw.fog == 0 ? img_get_px(draw.xpm.img, draw.tex_x,
-			((((draw.draw_start - draw.vertical) * 256 - draw.h * 128 +
-			draw.line_height * 128) * draw.xpm.height) / draw.line_height) /
-			256) : create_rgbcolor('n'), img, draw.x, draw.draw_start++);
+		// while (draw.draw_start < draw.draw_end)
+		// 	img_set_px(draw.fog == 0 ? img_get_px(draw.xpm.img, draw.tex_x,
+		// 	((((draw.draw_start - draw.vertical) * 256 - draw.h * 128 +
+		// 	draw.line_height * 128) * draw.xpm.height) / draw.line_height) /
+		// 	256) : create_rgbcolor('n'), img, draw.x, draw.draw_start++);
 	}
-	img = create_hud(img, draw);
+	// img = create_hud(img, draw);
 	// if (g_game.save == 1)
 	// 	export_as_bmp("save.bmp", img.data, draw.w, draw.h);
 	// else

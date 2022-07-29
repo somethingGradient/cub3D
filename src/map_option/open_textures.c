@@ -20,8 +20,11 @@ int		open_textures(void)
 		return (exit_msg("Failure to open east."));
 	if (open_textures_file(&g_game.texture.west) == ERROR)
 		return (exit_msg("Failure to open west."));
-	if (open_textures_file(&g_game.texture.sprite) == ERROR)
-		return (exit_msg("Failure to open sprite."));
+	if (g_game.texture.sprite.path != NULL)
+	{
+		if (open_textures_file(&g_game.texture.sprite) == ERROR)
+			return (exit_msg("Failure to open sprite."));
+	}
 	// if (open_textures_file(&g_game.texture.floor) == 0)
 	// 	return (exit_msg("Failure to open floor."));
 	// if (open_textures_file(&g_game.texture.ceil) == 0)
