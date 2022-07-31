@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: qdam <qdam@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/21 20:37:00 by qdam              #+#    #+#             */
-/*   Updated: 2021/10/09 01:54:36 by qdam             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "includes/cub3D.h"
 
-// Initial checks for program's arguments. If invalid then quit directly
 static inline void	initial_arg_checks(int ac, char **av)
 {
 	if (ac != 2)
@@ -23,8 +10,6 @@ static inline void	initial_arg_checks(int ac, char **av)
 		error_then_exit(av[1], READ_ERROR);
 }
 
-// Launch parser for the .cub file provided by fname and write parsed data
-// to the cub data structure. If there is an error, display it then exit
 static inline void	launch_parser(char *fname, t_cub_data *cub)
 {
 	int		fd;

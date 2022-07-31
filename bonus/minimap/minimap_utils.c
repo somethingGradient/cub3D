@@ -1,21 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minimap_utils.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: qdam <qdam@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 19:06:45 by malatini          #+#    #+#             */
-/*   Updated: 2021/10/09 02:14:54 by qdam             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/cub3D.h"
 
-/*
-** Permet d'afficher des rectangle (pour la minimap)
-* @author: malatini
-*/
 void	rect(t_img *img, t_shape shape, int color)
 {
 	int	i;
@@ -34,10 +18,6 @@ void	rect(t_img *img, t_shape shape, int color)
 	}
 }
 
-/*
-** Permet de tracer une ligne, va servir pour le raycast sur la minimap
-* @author: malatini
-*/
 void	draw_line(t_img *img, t_vector s, t_vector e, double angle)
 {
 	double	deltax;
@@ -56,10 +36,6 @@ void	draw_line(t_img *img, t_vector s, t_vector e, double angle)
 	}
 }
 
-/*
-** Permet de dessiner un cercle sur l'image
-* @author: malatini
-*/
 void	circle(t_img *img, t_shape s, int color)
 {
 	int		i;
