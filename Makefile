@@ -1,6 +1,6 @@
 LIBFT_DIR	=	libft
 
-MANDA_DIR	=	manda
+MANDA_DIR	=	mandatory
 MANDA_INC	=	${MANDA_DIR}/includes
 MANDA_NAMES	=	cub_parser/cub_data.c \
 				cub_parser/cub_parser.c \
